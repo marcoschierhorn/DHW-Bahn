@@ -1,0 +1,9 @@
+log/*
+cache/*
+web/uploads/*
+.buildpath
+.gitconfig
+.project
+.settings/
+lib/*/base/*
+lib/*/base
