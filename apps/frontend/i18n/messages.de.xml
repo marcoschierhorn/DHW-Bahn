@@ -1,0 +1,46 @@
+<?xml version="1.0" ?>
+<xliff version="1.0">
+  <file original="global" source-language="en" target-language="de" datatype="plaintext">
+    <body>
+      <trans-unit id="REQUIRED">
+        <source>Required.</source>
+        <target>Pflichtfeld.</target>
+      </trans-unit>
+      <trans-unit id="INVALID">
+        <source>Invalid.</source>
+        <target>Ungültig.</target>
+      </trans-unit>
+      <trans-unit id="USERNAME_PASSWORD_INVALID">
+        <source>An object with the same "email" already exist.</source>
+        <target>Diese E-Mail Adresse wurde schon einmal verwendet.</target>
+      </trans-unit>
+      <trans-unit id="STRING_TOO_LONG">
+        <source>"%value%" is too long (%max_length% characters max).</source>
+        <target>"%value%" ist zu lang (%max_length% Chars max).</target>
+      </trans-unit>
+      <trans-unit id="STRING_TOO_SHORT">
+        <source>"%value%" is too short (%min_length% characters min).</source>
+        <target>"%value%" ist zu kurz (%min_length% Chars min).</target>
+      </trans-unit>
+      <trans-unit id="USER_ALREADY_REGISTERED">
+        <source>An account with that email address already exists. If you have forgotten your password, click "Forgot password?".</source>
+        <target>Es existiert bereits ein Eintrag mit dieser E-Mail Adresse. Wenn Sie Ihr Passwort vergessen haben, dann klicken Sie bitte "Passwort vergessen".</target>
+      </trans-unit>
+      <trans-unit id="EMAIL_ADDRESS_NOT_MATCHING">
+        <source>The email addresses did not match.</source>
+        <target>Bitte überprüfen Sie Ihre E-Mail Adressen</target>
+      </trans-unit>
+      <trans-unit id="INVALID_CAPTCHA">
+        <source>The captcha is not valid (%error%).</source>
+        <target>Bitte überprüfen Sie den Captcha Code</target>
+      </trans-unit>
+      <trans-unit id="REGISTER_AFTER">
+        <source>Thank you for applying for an account. You will receive a verification
+email shortly. If you do not see that email, please be sure to check
+your "spam" or "bulk" folder.</source>
+        <target>Vielen Dank für Ihre Registrierung. Sie werden in kürze eine E-Mail erhalten. Falls Sie keine erhalten sollten, 
+        überprüfen Sie bitte Ihr "Spam" Verzeichnis</target>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>

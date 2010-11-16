@@ -1,0 +1,73 @@
+User:
+  actAs: [Timestampable]
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true  
+    anrede:
+      type: enum
+      notnull: true
+      values: ['Herr', 'Frau']
+    vorname:
+      type: string(255)
+      notnull: true
+    nachname:
+      type: string(255)
+      notnull: true
+    email:
+      type: string(255)
+      notnull: true
+      email: true
+    strasse:
+      type: string(255)
+      notnull: true
+    plz:
+      type: integer(5)
+      notnull: true
+    wohnort:
+      type: string(255)
+      notnull: true
+    codes_id:
+      type: integer(6)
+    standorte_id:
+      type: integer(2)
+    abgemeldet:
+      type: boolean
+      default: false
+  indexes:
+    email_index:
+      fields:
+        email:
+          sorting: ASC
+          length: 10
+      type: unique
+  relations:
+    Codes:
+      foreignType: one
+      foreignAlias: UserModel
+    Standorte:
+      foreignType: one
+      foreignAlias: UserModel
+
+Standorte:
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+
+Codes:
+  actAs: [Timestampable]
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+    used:
+      type: boolean
+      default: false

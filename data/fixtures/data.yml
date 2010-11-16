@@ -1,0 +1,87 @@
+Codes:
+  Codes_1:
+    name: 6VCRZHG5
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_2:
+    name: QNUAR3G3
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_3:
+    name: GENGSFG3
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_4:
+    name: NZQMRKG2
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_5:
+    name: 1WPPBOG2
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+Standorte:
+  Standorte_1:
+    name: 'Rheinisch Westfälische Technische Hochschule Aachen'
+  Standorte_2:
+    name: 'Technische Universität Berlin'
+  Standorte_3:
+    name: 'Universität Bielefeld'
+  Standorte_4:
+    name: 'Ruhr-Universität Bochum'
+  Standorte_5:
+    name: 'Technische Universität Braunschweig'
+  Standorte_6:
+    name: 'Universität Bremen'
+  Standorte_7:
+    name: 'Technische Universität Chemnitz'
+  Standorte_8:
+    name: 'Technische Universität Darmstadt'
+  Standorte_9:
+    name: 'Technische Universität Dresden'
+  Standorte_10:
+    name: 'Heinrich-Heine-Universität Düsseldorf'
+  Standorte_11:
+    name: 'Friedrich-Alexander-Universität Erlangen-Nürnberg'
+  Standorte_12:
+    name: 'Johann-Wolfgang-Goethe-Universität Frankfurt am Main'
+  Standorte_13:
+    name: 'Albert-Ludwigs-Universität Freiburg'
+  Standorte_14:
+    name: 'Justus-Liebig-Universität Gießen'
+  Standorte_15:
+    name: 'Georg-August-Universität Göttingen'
+  Standorte_16:
+    name: 'Hochschule für Angewandte Wissenschaften Hamburg'
+  Standorte_17:
+    name: 'Leibniz Universität Hannover'
+  Standorte_18:
+    name: 'Ruprecht-Karls-Universität Heidelberg'
+  Standorte_19:
+    name: 'KIT (Universität) Karlsruhe'
+  Standorte_20:
+    name: 'Universität Kassel'
+  Standorte_21:
+    name: 'Christian-Albrechts-Universität zu Kiel'
+  Standorte_22:
+    name: 'Universität zu Köln'
+  Standorte_23:
+    name: 'Universität Konstanz'
+  Standorte_24:
+    name: 'Universität Mannheim'
+  Standorte_25:
+    name: 'Fachhochschule München'
+  Standorte_26:
+    name: 'Ludwig-Maximilians-Universität München'
+  Standorte_27:
+    name: 'Technische Universität München'
+  Standorte_28:
+    name: 'Fachhochschule Münster'
+  Standorte_29:
+    name: 'Westfälische-Wilhelms-Universität Münster'
+  Standorte_30:
+    name: 'Universität des Saarlandes'

@@ -1,0 +1,5 @@
+CREATE TABLE codes (id BIGINT AUTO_INCREMENT, name VARCHAR(255), used TINYINT(1) DEFAULT '0', created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE standorte (id SMALLINT AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE user (id BIGINT AUTO_INCREMENT, anrede VARCHAR(255) NOT NULL, vorname VARCHAR(255) NOT NULL, nachname VARCHAR(255) NOT NULL, email VARCHAR(255) NOT NULL, strasse VARCHAR(255) NOT NULL, plz BIGINT NOT NULL, wohnort VARCHAR(255) NOT NULL, codes_id BIGINT, standorte_id SMALLINT, abgemeldet TINYINT(1) DEFAULT '0', created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, UNIQUE INDEX email_index_idx (email(10) ASC), INDEX codes_id_idx (codes_id), INDEX standorte_id_idx (standorte_id), PRIMARY KEY(id)) ENGINE = INNODB;
+ALTER TABLE user ADD CONSTRAINT user_standorte_id_standorte_id FOREIGN KEY (standorte_id) REFERENCES standorte(id);
+ALTER TABLE user ADD CONSTRAINT user_codes_id_codes_id FOREIGN KEY (codes_id) REFERENCES codes(id);
