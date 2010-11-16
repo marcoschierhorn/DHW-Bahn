@@ -7,3 +7,5 @@ web/uploads/*
 .settings/
 lib/*/base/*
 lib/*/base
+lib/filter/doctrine/base
+lib/filter/doctrine/base/*
