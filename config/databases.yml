@@ -1,0 +1,7 @@
+all:
+  doctrine:
+    class: sfDoctrineDatabase
+    param:
+      dsn: 'mysql:host=localhost;dbname=dhw'
+      username: dhw
+      password: fhb7rb66Ys2MhzjL
