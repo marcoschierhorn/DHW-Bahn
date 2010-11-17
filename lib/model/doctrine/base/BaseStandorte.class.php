@@ -7,18 +7,18 @@
  * 
  * @property integer $id
  * @property string $name
- * @property User $UserModel
+ * @property User $User
  * 
- * @method integer   getId()        Returns the current record's "id" value
- * @method string    getName()      Returns the current record's "name" value
- * @method User      getUserModel() Returns the current record's "UserModel" value
- * @method Standorte setId()        Sets the current record's "id" value
- * @method Standorte setName()      Sets the current record's "name" value
- * @method Standorte setUserModel() Sets the current record's "UserModel" value
+ * @method integer   getId()   Returns the current record's "id" value
+ * @method string    getName() Returns the current record's "name" value
+ * @method User      getUser() Returns the current record's "User" value
+ * @method Standorte setId()   Sets the current record's "id" value
+ * @method Standorte setName() Sets the current record's "name" value
+ * @method Standorte setUser() Sets the current record's "User" value
  * 
  * @package    bahn
  * @subpackage model
- * @author     Your name here
+ * @author     Marco Schierhorn
  * @version    SVN: $Id$
  */
 abstract class BaseStandorte extends sfDoctrineRecord
@@ -41,7 +41,7 @@ abstract class BaseStandorte extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('User as UserModel', array(
+        $this->hasOne('User', array(
              'local' => 'id',
              'foreign' => 'standorte_id'));
     }

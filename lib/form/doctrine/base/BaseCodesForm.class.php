@@ -7,7 +7,7 @@
  *
  * @package    bahn
  * @subpackage form
- * @author     Your name here
+ * @author     Marco Schierhorn
  * @version    SVN: $Id$
  */
 abstract class BaseCodesForm extends BaseFormDoctrine

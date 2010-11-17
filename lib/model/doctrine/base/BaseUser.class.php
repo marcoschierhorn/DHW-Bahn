@@ -16,39 +16,54 @@
  * @property integer $codes_id
  * @property integer $standorte_id
  * @property boolean $abgemeldet
+ * @property integer $survey_id
  * @property Codes $Codes
  * @property Standorte $Standorte
+ * @property Doctrine_Collection $SurveyAnlaesse
+ * @property Doctrine_Collection $SurveyAngebotVerkehrsmittel12
+ * @property Doctrine_Collection $SurveyAngebotVerkehrsmittelAllgemein
+ * @property Survey $Survey
  * 
- * @method integer   getId()           Returns the current record's "id" value
- * @method enum      getAnrede()       Returns the current record's "anrede" value
- * @method string    getVorname()      Returns the current record's "vorname" value
- * @method string    getNachname()     Returns the current record's "nachname" value
- * @method string    getEmail()        Returns the current record's "email" value
- * @method string    getStrasse()      Returns the current record's "strasse" value
- * @method integer   getPlz()          Returns the current record's "plz" value
- * @method string    getWohnort()      Returns the current record's "wohnort" value
- * @method integer   getCodesId()      Returns the current record's "codes_id" value
- * @method integer   getStandorteId()  Returns the current record's "standorte_id" value
- * @method boolean   getAbgemeldet()   Returns the current record's "abgemeldet" value
- * @method Codes     getCodes()        Returns the current record's "Codes" value
- * @method Standorte getStandorte()    Returns the current record's "Standorte" value
- * @method User      setId()           Sets the current record's "id" value
- * @method User      setAnrede()       Sets the current record's "anrede" value
- * @method User      setVorname()      Sets the current record's "vorname" value
- * @method User      setNachname()     Sets the current record's "nachname" value
- * @method User      setEmail()        Sets the current record's "email" value
- * @method User      setStrasse()      Sets the current record's "strasse" value
- * @method User      setPlz()          Sets the current record's "plz" value
- * @method User      setWohnort()      Sets the current record's "wohnort" value
- * @method User      setCodesId()      Sets the current record's "codes_id" value
- * @method User      setStandorteId()  Sets the current record's "standorte_id" value
- * @method User      setAbgemeldet()   Sets the current record's "abgemeldet" value
- * @method User      setCodes()        Sets the current record's "Codes" value
- * @method User      setStandorte()    Sets the current record's "Standorte" value
+ * @method integer             getId()                                   Returns the current record's "id" value
+ * @method enum                getAnrede()                               Returns the current record's "anrede" value
+ * @method string              getVorname()                              Returns the current record's "vorname" value
+ * @method string              getNachname()                             Returns the current record's "nachname" value
+ * @method string              getEmail()                                Returns the current record's "email" value
+ * @method string              getStrasse()                              Returns the current record's "strasse" value
+ * @method integer             getPlz()                                  Returns the current record's "plz" value
+ * @method string              getWohnort()                              Returns the current record's "wohnort" value
+ * @method integer             getCodesId()                              Returns the current record's "codes_id" value
+ * @method integer             getStandorteId()                          Returns the current record's "standorte_id" value
+ * @method boolean             getAbgemeldet()                           Returns the current record's "abgemeldet" value
+ * @method integer             getSurveyId()                             Returns the current record's "survey_id" value
+ * @method Codes               getCodes()                                Returns the current record's "Codes" value
+ * @method Standorte           getStandorte()                            Returns the current record's "Standorte" value
+ * @method Doctrine_Collection getSurveyAnlaesse()                       Returns the current record's "SurveyAnlaesse" collection
+ * @method Doctrine_Collection getSurveyAngebotVerkehrsmittel12()        Returns the current record's "SurveyAngebotVerkehrsmittel12" collection
+ * @method Doctrine_Collection getSurveyAngebotVerkehrsmittelAllgemein() Returns the current record's "SurveyAngebotVerkehrsmittelAllgemein" collection
+ * @method Survey              getSurvey()                               Returns the current record's "Survey" value
+ * @method User                setId()                                   Sets the current record's "id" value
+ * @method User                setAnrede()                               Sets the current record's "anrede" value
+ * @method User                setVorname()                              Sets the current record's "vorname" value
+ * @method User                setNachname()                             Sets the current record's "nachname" value
+ * @method User                setEmail()                                Sets the current record's "email" value
+ * @method User                setStrasse()                              Sets the current record's "strasse" value
+ * @method User                setPlz()                                  Sets the current record's "plz" value
+ * @method User                setWohnort()                              Sets the current record's "wohnort" value
+ * @method User                setCodesId()                              Sets the current record's "codes_id" value
+ * @method User                setStandorteId()                          Sets the current record's "standorte_id" value
+ * @method User                setAbgemeldet()                           Sets the current record's "abgemeldet" value
+ * @method User                setSurveyId()                             Sets the current record's "survey_id" value
+ * @method User                setCodes()                                Sets the current record's "Codes" value
+ * @method User                setStandorte()                            Sets the current record's "Standorte" value
+ * @method User                setSurveyAnlaesse()                       Sets the current record's "SurveyAnlaesse" collection
+ * @method User                setSurveyAngebotVerkehrsmittel12()        Sets the current record's "SurveyAngebotVerkehrsmittel12" collection
+ * @method User                setSurveyAngebotVerkehrsmittelAllgemein() Sets the current record's "SurveyAngebotVerkehrsmittelAllgemein" collection
+ * @method User                setSurvey()                               Sets the current record's "Survey" value
  * 
  * @package    bahn
  * @subpackage model
- * @author     Your name here
+ * @author     Marco Schierhorn
  * @version    SVN: $Id$
  */
 abstract class BaseUser extends sfDoctrineRecord
@@ -114,6 +129,11 @@ abstract class BaseUser extends sfDoctrineRecord
              'type' => 'boolean',
              'default' => false,
              ));
+        $this->hasColumn('survey_id', 'integer', 6, array(
+             'type' => 'integer',
+             'notnull' => false,
+             'length' => 6,
+             ));
 
 
         $this->index('email_index', array(
@@ -138,6 +158,25 @@ abstract class BaseUser extends sfDoctrineRecord
 
         $this->hasOne('Standorte', array(
              'local' => 'standorte_id',
+             'foreign' => 'id'));
+
+        $this->hasMany('SurveyAnlaesse', array(
+             'refClass' => 'SurveyAnlaesseUser',
+             'local' => 'user_id',
+             'foreign' => 'survey_id'));
+
+        $this->hasMany('SurveyAngebotVerkehrsmittel12', array(
+             'refClass' => 'SurveyAngebotVerkehrsmittel12User',
+             'local' => 'user_id',
+             'foreign' => 'survey_id'));
+
+        $this->hasMany('SurveyAngebotVerkehrsmittelAllgemein', array(
+             'refClass' => 'SurveyAngebotVerkehrsmittelAllgemeinUser',
+             'local' => 'user_id',
+             'foreign' => 'survey_id'));
+
+        $this->hasOne('Survey', array(
+             'local' => 'survey_id',
              'foreign' => 'id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable(array(

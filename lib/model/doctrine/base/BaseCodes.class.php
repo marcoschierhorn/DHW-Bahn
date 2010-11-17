@@ -8,20 +8,20 @@
  * @property integer $id
  * @property string $name
  * @property boolean $used
- * @property User $UserModel
+ * @property User $User
  * 
- * @method integer getId()        Returns the current record's "id" value
- * @method string  getName()      Returns the current record's "name" value
- * @method boolean getUsed()      Returns the current record's "used" value
- * @method User    getUserModel() Returns the current record's "UserModel" value
- * @method Codes   setId()        Sets the current record's "id" value
- * @method Codes   setName()      Sets the current record's "name" value
- * @method Codes   setUsed()      Sets the current record's "used" value
- * @method Codes   setUserModel() Sets the current record's "UserModel" value
+ * @method integer getId()   Returns the current record's "id" value
+ * @method string  getName() Returns the current record's "name" value
+ * @method boolean getUsed() Returns the current record's "used" value
+ * @method User    getUser() Returns the current record's "User" value
+ * @method Codes   setId()   Sets the current record's "id" value
+ * @method Codes   setName() Sets the current record's "name" value
+ * @method Codes   setUsed() Sets the current record's "used" value
+ * @method Codes   setUser() Sets the current record's "User" value
  * 
  * @package    bahn
  * @subpackage model
- * @author     Your name here
+ * @author     Marco Schierhorn
  * @version    SVN: $Id$
  */
 abstract class BaseCodes extends sfDoctrineRecord
@@ -48,7 +48,7 @@ abstract class BaseCodes extends sfDoctrineRecord
     public function setUp()
     {
         parent::setUp();
-        $this->hasOne('User as UserModel', array(
+        $this->hasOne('User', array(
              'local' => 'id',
              'foreign' => 'codes_id'));
 

@@ -16,7 +16,12 @@ class UserForm extends BaseUserForm
       $this['id'],
       $this['codes_id'],
       $this['created_at'],
-      $this['updated_at']
+      $this['updated_at'],
+      $this['survey_id'],
+      $this['survey_anlaesse_list'],
+      $this['survey_angebot_verkehrsmittel12_list'],
+      $this['survey_anlaesse_list'],
+      $this['survey_angebot_verkehrsmittel_allgemein_list']
     );
 
     $this->setWidget('captcha', new sfWidgetFormInput());
@@ -26,8 +31,11 @@ class UserForm extends BaseUserForm
                                                          'required' => 'Bitte geben Sie den Captcha Code ein.')));
 
 
+    $this->getValidator('email')->setMessage('invalid', 'Bitte geben Sie eine gültige E-Mail Adresse ein');
+    $this->getValidator('plz')->setMessage('invalid', 'Bitte geben Sie eine gültige PLZ ein');
 
     $this->getWidget('standorte_id')->setLabel('Standort');
+    $this->widgetSchema->setFormFormatterName('Bahn');
 
   }
 }

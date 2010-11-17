@@ -1,17 +1,180 @@
-# # Populate this file with data to be loaded by your ORM's *:data-load task.
-# # You can create multiple files in this directory (i.e. 010_users.yml,
-# # 020_articles.yml, etc) which will be loaded in alphabetical order.
-# # 
-# # See documentation for your ORM's *:data-load task for more information.
-# 
-# User:
-#   fabien:
-#     username: fabien
-#     password: changeme
-#     name:     Fabien Potencier
-#     email:    fabien.potencier@symfony-project.com
-#   kris:
-#     username: Kris.Wallsmith
-#     password: changeme
-#     name:     Kris Wallsmith
-#     email:    kris.wallsmith@symfony-project.com
+SurveyAngebotVergleichbareReise:
+  SurveyAngebotVergleichbareReise_1:
+    name: 'Werde das Quer-durchs-Land-Ticket bestimmt nicht wieder nutzen'
+  SurveyAngebotVergleichbareReise_2:
+    name: 'Werde das Quer-durchs-Land-Ticket wahrscheinlich nicht wieder nutzen'
+  SurveyAngebotVergleichbareReise_3:
+    name: 'Werde das Quer-durchs-Land-Ticket vielleicht, vielleicht nicht wieder nutzen'
+  SurveyAngebotVergleichbareReise_4:
+    name: 'Werde das Quer-durchs-Land-Ticket wahrscheinlich wieder nutzen'
+  SurveyAngebotVergleichbareReise_5:
+    name: 'Werde das Quer-durchs-Land Ticket bestimmt wieder nutzen'
+  SurveyAngebotVergleichbareReise_99:
+    name: 'weiß nicht'
+SurveyAngebotVerkehrsmittel12:
+  SurveyAngebotVerkehrsmittel12_1:
+    name: 'Privater PKW'
+  SurveyAngebotVerkehrsmittel12_2:
+    name: 'Firmen- bzw. Dienstwagen'
+  SurveyAngebotVerkehrsmittel12_3:
+    name: Mietwagen
+  SurveyAngebotVerkehrsmittel12_4:
+    name: Flugzeug
+  SurveyAngebotVerkehrsmittel12_5:
+    name: 'Fernverkehrszüge der Deutschen Bahn, wie ICE, IC oder EC'
+  SurveyAngebotVerkehrsmittel12_6:
+    name: 'Nahverkehrszüge der Deutschen Bahn, wie RE, RB oder IRE'
+  SurveyAngebotVerkehrsmittel12_7:
+    name: 'Keines dieser Verkehrsmittel'
+  SurveyAngebotVerkehrsmittel12_99:
+    name: 'weiß nicht'
+SurveyAngebotBekannt:
+  SurveyAngebotBekannt_1:
+    name: 'Ich habe erst jetzt vom Quer-durchs-Land-Ticket erfahren und kannte es bislang nicht'
+  SurveyAngebotBekannt_2:
+    name: 'Ich kannte das Quer-durchs-Land-Ticket bereits dem Namen nach'
+  SurveyAngebotBekannt_3:
+    name: 'Ich wusste bereits, was das Quer-durchs-Land-Ticket ist, habe es aber bislang noch nicht genutzt'
+  SurveyAngebotBekannt_4:
+    name: 'Ich bin mit dem Quer-durchs-Land-Ticket ziemlich vertraut und habe es auch schon mindestens einmal genutzt'
+  SurveyAngebotBekannt_99:
+    name: 'weiß nicht'
+SurveyAngebotVerkehrsmittelAllgemein:
+  SurveyAngebotVerkehrsmittelAllgemein_1:
+    name: 'Privater PKW'
+  SurveyAngebotVerkehrsmittelAllgemein_2:
+    name: 'Firmen- bzw. Dienstwagen'
+  SurveyAngebotVerkehrsmittelAllgemein_3:
+    name: Mietwagen
+  SurveyAngebotVerkehrsmittelAllgemein_4:
+    name: Flugzeug
+  SurveyAngebotVerkehrsmittelAllgemein_5:
+    name: 'Fernverkehrszüge der Deutschen Bahn, wie ICE, IC oder EC'
+  SurveyAngebotVerkehrsmittelAllgemein_6:
+    name: 'Nahverkehrszüge der Deutschen Bahn, wie RE, RB oder IRE'
+  SurveyAngebotVerkehrsmittelAllgemein_7:
+    name: 'Keines dieser Verkehrsmittel'
+  SurveyAngebotVerkehrsmittelAllgemein_99:
+    name: 'weiß nicht'
+SurveyAnlaesse:
+  SurveyAnlaesse_1:
+    name: 'Kurzurlaub (1-3 Übernachtungen)'
+  SurveyAnlaesse_2:
+    name: 'Längere Urlaubsreise (4 und mehr Übernachtungen)'
+  SurveyAnlaesse_3:
+    name: Tagesausflug
+  SurveyAnlaesse_4:
+    name: Wochenendpendeln/Heimfahrten
+  SurveyAnlaesse_5:
+    name: 'Besuch von Familie/Freunden/Bekannten'
+  SurveyAnlaesse_6:
+    name: Städtereise
+  SurveyAnlaesse_7:
+    name: 'Reise zu Aus- oder Weiterbildungszwecken / Dienstreise'
+  SurveyAnlaesse_8:
+    name: 'Sonstiger Anlass'
+  SurveyAnlaesse_9:
+    name: 'Keiner dieser: Nutzung kommt für mich nicht in Frage'
+  SurveyAnlaesse_99:
+    name: 'weiß nicht'
+Codes:
+  Codes_1:
+    name: 6VCRZHG5
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_2:
+    name: QNUAR3G3
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_3:
+    name: GENGSFG3
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_4:
+    name: NZQMRKG2
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+  Codes_5:
+    name: 1WPPBOG2
+    used: false
+    created_at: '0000-00-00 00:00:00'
+    updated_at: '0000-00-00 00:00:00'
+Standorte:
+  Standorte_1:
+    name: 'Rheinisch Westfälische Technische Hochschule Aachen'
+  Standorte_2:
+    name: 'Technische Universität Berlin'
+  Standorte_3:
+    name: 'Universität Bielefeld'
+  Standorte_4:
+    name: 'Ruhr-Universität Bochum'
+  Standorte_5:
+    name: 'Technische Universität Braunschweig'
+  Standorte_6:
+    name: 'Universität Bremen'
+  Standorte_7:
+    name: 'Technische Universität Chemnitz'
+  Standorte_8:
+    name: 'Technische Universität Darmstadt'
+  Standorte_9:
+    name: 'Technische Universität Dresden'
+  Standorte_10:
+    name: 'Heinrich-Heine-Universität Düsseldorf'
+  Standorte_11:
+    name: 'Friedrich-Alexander-Universität Erlangen-Nürnberg'
+  Standorte_12:
+    name: 'Johann-Wolfgang-Goethe-Universität Frankfurt am Main'
+  Standorte_13:
+    name: 'Albert-Ludwigs-Universität Freiburg'
+  Standorte_14:
+    name: 'Justus-Liebig-Universität Gießen'
+  Standorte_15:
+    name: 'Georg-August-Universität Göttingen'
+  Standorte_16:
+    name: 'Hochschule für Angewandte Wissenschaften Hamburg'
+  Standorte_17:
+    name: 'Leibniz Universität Hannover'
+  Standorte_18:
+    name: 'Ruprecht-Karls-Universität Heidelberg'
+  Standorte_19:
+    name: 'KIT (Universität) Karlsruhe'
+  Standorte_20:
+    name: 'Universität Kassel'
+  Standorte_21:
+    name: 'Christian-Albrechts-Universität zu Kiel'
+  Standorte_22:
+    name: 'Universität zu Köln'
+  Standorte_23:
+    name: 'Universität Konstanz'
+  Standorte_24:
+    name: 'Universität Mannheim'
+  Standorte_25:
+    name: 'Fachhochschule München'
+  Standorte_26:
+    name: 'Ludwig-Maximilians-Universität München'
+  Standorte_27:
+    name: 'Technische Universität München'
+  Standorte_28:
+    name: 'Fachhochschule Münster'
+  Standorte_29:
+    name: 'Westfälische-Wilhelms-Universität Münster'
+  Standorte_30:
+    name: 'Universität des Saarlandes'
+User:
+  User_1:
+    anrede: Herr
+    vorname: Marco
+    nachname: Schierhorn
+    email: marco.schierhorn@gmail.com
+    strasse: 'Tannenstraße 51'
+    plz: '40474'
+    wohnort: Düsseldorf
+    Codes: Codes_1
+    Standorte: Standorte_10
+    abgemeldet: false
+    created_at: '2010-11-17 16:57:30'
+    updated_at: '2010-11-17 16:57:30'

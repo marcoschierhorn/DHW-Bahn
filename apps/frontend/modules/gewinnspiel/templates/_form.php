@@ -11,81 +11,52 @@ captcha_reload_button();
 
 
 <form action="<?php echo url_for('gewinnspiel/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
-  <table>
-    <tfoot>
-      <tr>
-        <td colspan="2">
-          <?php echo $form->renderHiddenFields(false) ?>
-          <input type="submit" value="Save" />
-        </td>
-      </tr>
-    </tfoot>
-    <tbody>
+
+    <?php echo $form->renderHiddenFields(false) ?>
+
       <?php echo $form->renderGlobalErrors() ?>
-      <tr>
-        <th><?php echo $form['anrede']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['anrede']->renderError() ?>
-          <?php echo $form['anrede'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['vorname']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['vorname']->renderError() ?>
-          <?php echo $form['vorname'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['nachname']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['nachname']->renderError() ?>
-          <?php echo $form['nachname'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['email']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['email']->renderError() ?>
-          <?php echo $form['email'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['strasse']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['strasse']->renderError() ?>
-          <?php echo $form['strasse'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['plz']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['plz']->renderError() ?>
-          <?php echo $form['plz'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['wohnort']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['wohnort']->renderError() ?>
-          <?php echo $form['wohnort'] ?>
-        </td>
-      </tr>
-      <tr>
-        <th><?php echo $form['standorte_id']->renderLabel() ?></th>
-        <td>
-          <?php echo $form['standorte_id']->renderError() ?>
-          <?php echo $form['standorte_id'] ?>
-        </td>
-      </tr>
-      <tr>
-      <th><?php echo $form['captcha']->renderLabel(); ?></th>
-      <td>
-        <?php echo $form['captcha']->renderError(); ?>
-        <?php echo captcha_image(); echo captcha_reload_button(); ?><br/>
-        <?php echo $form['captcha']->render(); ?>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+
+      <fieldset>
+
+        <?php echo $form['anrede']->renderRow() ?>
+        <?php echo $form['vorname']->renderRow() ?>
+        <?php echo $form['nachname']->renderRow() ?>
+        <?php echo $form['email']->renderRow() ?>
+        <?php echo $form['strasse']->renderRow() ?>
+        <?php echo $form['plz']->renderRow() ?>
+        <?php echo $form['wohnort']->renderRow() ?>
+        <?php echo $form['standorte_id']->renderRow() ?>
+
+     </fieldset>
+
+      <fieldset>
+        <div class="captcha">
+          <?php echo captcha_image(); echo captcha_reload_button(); ?>
+        </div>
+        <?php echo $form['captcha']->renderRow(); ?>
+      </fieldset>
+
+      <fieldset>
+        <sup>*</sup> Pflichteingaben
+        Hinweis: Das Gewinnspiel läuft bis 30. Januar 2011. Eine Barauszahlung der Gewinne ist nicht möglich. Der Rechtsweg ist ausgeschlossen. Mitarbeiter der Deutschen Bahn AG sowie deren Angehörige dürfen nicht teilnehmen. Die Gewinner werden unter allen Teilnehmern ausgelost. Die Gewinner werden per Post benachrichtigt. Das Versandrisiko wird von uns nicht übernommen. Ihre Daten werden ausschließlich für die Abwicklung des Gewinnspiels sowie für anonymisierte Marktforschungszwecke verwendet. Im Umgang mit Ihren persönlichen Daten werden selbstverständlich alle Vorgaben des <span class="texturl"><a target="_blank" href="http://www.bahn.de/p/view/home/info/schutz.shtml">Datenschutzes</a></span> beachtet.
+      </fieldset>
+
+      <fieldset>
+        <strong>Willst du auch zukünftig bestens über aktuelle Angebote und Gewinnspiele auf bahn.de informiert sein? Dann melde dich hiermit gleich zu unserem bahn.de-Newsletter an.</strong>
+        <br/>
+        Ich möchte gerne regelmäßig den kostenlosen Newsletter von www.bahn.de per E-Mail erhalten. Damit werden Sie regelmäßig per E-Mail über Neuheiten, Sonderangebote und Gewinnspiele informiert. Dieser kostenlose Service kann in jedem Newsletter oder jederzeit unter www.bahn.de/newsletter wieder abbestellt werden.
+      </fieldset>
+
+      <fieldset>
+        <div class="button-inside">
+          <!-- Submit -->
+          Ich bestätige die Richtigkeit meiner Angaben und erkenne die Teilnahmebedingungen an
+          <span class="button-border right">
+            <button type="submit" name="startbutton" class="highlight" value="1" title="Jetzt teilnehmen">
+              <span>Jetzt teilnehmen</span>
+            </button>
+          </span>
+        </div>
+      </fieldset>
+
 </form>

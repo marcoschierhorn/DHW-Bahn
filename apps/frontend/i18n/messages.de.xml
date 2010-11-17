@@ -8,15 +8,15 @@
       </trans-unit>
       <trans-unit id="INVALID">
         <source>Invalid.</source>
-        <target>Ungültig.</target>
+        <target>Ungültige E-Mail Adresse.</target>
       </trans-unit>
       <trans-unit id="USERNAME_PASSWORD_INVALID">
         <source>An object with the same "email" already exist.</source>
         <target>Diese E-Mail Adresse wurde schon einmal verwendet.</target>
       </trans-unit>
       <trans-unit id="STRING_TOO_LONG">
-        <source>"%value%" is too long (%max_length% characters max).</source>
-        <target>"%value%" ist zu lang (%max_length% Chars max).</target>
+        <source>"%value%" is not an integer.</source>
+        <target>%value% ist keine gültige Postleitzahl</target>
       </trans-unit>
       <trans-unit id="STRING_TOO_SHORT">
         <source>"%value%" is too short (%min_length% characters min).</source>

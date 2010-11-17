@@ -1,4 +1,5 @@
 # Project files
+symfony
 /cache/*
 /log/*
 /web/*_dev.php

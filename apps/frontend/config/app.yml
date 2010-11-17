@@ -5,7 +5,7 @@
 all:
   sf_crypto_captcha:
   #Dimensions
-    width:                            250                 #width of the captcha
+    width:                            200                 #width of the captcha
     height:                           60                  #height of the captcha
   #Background
     bg_red:                           238                 #quantity of red color (0->255)

@@ -35,6 +35,9 @@ User:
     abgemeldet:
       type: boolean
       default: false
+    survey_id:
+      type: integer(6)
+      notnull: false
   indexes:
     email_index:
       fields:
@@ -45,10 +48,13 @@ User:
   relations:
     Codes:
       foreignType: one
-      foreignAlias: UserModel
     Standorte:
       foreignType: one
-      foreignAlias: UserModel
+    SurveyAnlaesse: { class: SurveyAnlaesse, refClass: SurveyAnlaesseUser, local: user_id, foreign: survey_id }
+    SurveyAngebotVerkehrsmittel12: { class: SurveyAngebotVerkehrsmittel12, refClass: SurveyAngebotVerkehrsmittel12User, local: user_id, foreign: survey_id }
+    SurveyAngebotVerkehrsmittelAllgemein: { class: SurveyAngebotVerkehrsmittelAllgemein, refClass: SurveyAngebotVerkehrsmittelAllgemeinUser, local: user_id, foreign: survey_id }
+    Survey:
+      foreignType: one
 
 Standorte:
   columns:
@@ -71,3 +77,97 @@ Codes:
     used:
       type: boolean
       default: false
+
+SurveyAngebotBekannt:
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+SurveyAnlaesse:
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+  relations:
+    User: { class: User, refClass: SurveyAnlaesseUser, local: survey_id, foreign: user_id }
+SurveyAngebotVergleichbareReise:
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+SurveyAngebotVerkehrsmittel12:
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+  relations:
+    User: { class: User, refClass: SurveyAngebotVerkehrsmittel12User, local: survey_id, foreign: user_id }
+
+SurveyAngebotVerkehrsmittelAllgemein:
+  columns:
+    id:
+      type: integer(2)
+      primary: true
+      autoincrement: true
+    name:
+      type: string(255)
+  relations:
+    User: { class: User, refClass: SurveyAngebotVerkehrsmittelAllgemeinUser, local: survey_id, foreign: user_id }
+
+
+SurveyAnlaesseUser:
+  options:
+    symfony:
+      form: false
+      filter: false
+  columns:
+      survey_id: { type: integer(2), primary: true }
+      user_id:   { type: integer(6), primary: true }
+SurveyAngebotVerkehrsmittel12User:
+  options:
+    symfony:
+      form: false
+      filter: false
+  columns:
+      survey_id: { type: integer(2), primary: true }
+      user_id:   { type: integer(6), primary: true }
+SurveyAngebotVerkehrsmittelAllgemeinUser:
+  options:
+    symfony:
+      form: false
+      filter: false
+  columns:
+      survey_id: { type: integer(2), primary: true }
+      user_id:   { type: integer(6), primary: true }
+    
+Survey:
+  actAs: [Timestampable]
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+    survey_angebot_bekannt_id:
+      type: integer(2)
+      notnull: false
+    survey_angebot_vergleichbare_reise_id:
+      type: integer(2)
+      notnull: false
+  relations:
+    SurveyAngebotBekannt:
+      foreignType: one
+      foreignAlias: SurveyAngebotBekanntModel
+    SurveyAngebotVergleichbareReise:
+      foreignType: one
+      foreignAlias: SurveyAngebotVergleichbareReiseModel

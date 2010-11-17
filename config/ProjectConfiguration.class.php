@@ -9,5 +9,16 @@ class ProjectConfiguration extends sfProjectConfiguration
   {
     $this->enablePlugins('sfDoctrinePlugin');
     $this->enablePlugins('sfCryptoCaptchaPlugin');
+
+    $this->getEventDispatcher()->connect(
+            'form.validation_error',
+            array('BaseForm', 'listenToValidationError')
+    );
+
+    $this->getEventDispatcher()->connect(
+            'form.post_configure',
+            array('BaseForm', 'listenToPostConfigure')
+    );
+
   }
 }

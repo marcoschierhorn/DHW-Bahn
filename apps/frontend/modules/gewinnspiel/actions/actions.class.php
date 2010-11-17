@@ -26,9 +26,28 @@ class gewinnspielActions extends sfActions
     $this->setTemplate('index');
   }
 
+  public function executeDankeUmfrage(sfWebRequest $request)
+  {
+    //$this->forward404Unless($this->user = Doctrine_Core::getTable('User')->find(array($request->getParameter('id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
+  }
+
   public function executeDanke(sfWebRequest $request)
   {
     $this->forward404Unless($this->user = Doctrine_Core::getTable('User')->find(array($request->getParameter('id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
+    $this->form = new UserSurveyForm($this->user = Doctrine_Core::getTable('User')->find(array($request->getParameter('id', 1))));
+
+    $this->processSurveyForm($request, $this->form);
+  }
+
+  protected function processSurveyForm(sfWebRequest $request, sfForm $form)
+  {
+    $form->bind($request->getParameter('user_survey'));
+    if ($request->isMethod('post') && $form->isValid())
+    {
+      // Get a random eCoupon Code and store it in the Users Table
+
+      $this->redirect('gewinnspiel/dankeUmfrage?id='.$form->getObject()->getId());
+    }
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -75,17 +94,27 @@ class gewinnspielActions extends sfActions
     $message = $this->getMailer()->compose(
       array('m.schierhorn@esv-media.de' => 'Marco Schierhorn'),
       $user->getEmail(),
-      $user->getFullName().', danke für Ihre Gewinnspiel Teilnahme',
+      'Teilnahmebestätigung und persönlicher eCoupon für Quer-durchs-Land-Ticket!',
       <<<EOF
-Vielen Dank für Ihre Teilnahme an unserem Gewinnspiel
+Hallo $user->getFullName(),
 
-Hier ist eCoupon {$user->getCodes()->getName()}.
+vielen Dank für Deine Teilnahme an unserem „Wohin-Du-willst“-Gewinnspiel.
 
-Falls Sie sich abmelden möchten, klicken Sie bitte auf folgenden Link:
+Wir drücken Dir die Daumen, dass Du zu den glücklichen Gewinnern von einem der 11 iPads oder 111 Quer-durchs-Land-Tickets gehörst.
 
-$abmeldenUrl
+Für Dein Interesse am Quer-durchs-Land-Ticket bedanken wir uns außerdem mit einem persönlichen eCoupon*, mit dem Du 6 Euro Rabatt auf ein Quer-durchs-Land-Tickets bekommst.
 
-Ihre Deutsche Bahn.
+Dein persönlicher eCoupon*: $user->getCodes()->getName(
+
+Also: Bis 30.04.2011 online ein Quer-durchs-Land-Ticket buchen, 6 Euro sparen, die Flatrate für ganz Deutschland testen und so weit, so oft und wohin Du willst fahren!
+
+Mit besten Grüßen
+
+Dein bahn.de-Team
+
+* Der eCoupon ist vom 13.12.2010 bis 30.04.2011 gültig. Nur ein Coupon pro Ticket. Der Coupon gilt ausschließlich für den angegebenen Zeitraum. Umtausch, Erstattung und Barauszahlung sind grundsätzlich ausgeschlossen. Einlösung nur unter www.bahn.de bei Online-Buchung eines Quer-durchs-Land-Tickets zum Selbstausdrucken. Weitere Infos unter www.bahn.de/wohin-du-willst
+
+Du hast diese E-Mail erhalten, weil Du an unserem „Wohin-Du-willst“-Gewinnspiel (www.bahn.de/wohin-du-willst unterlegen) teilgenommen hast. Solltest Du Dich nicht selbst angemeldet haben oder Dich vom Gewinnspiel wieder abmelden wollen, klicke bitte hier $abmeldenUrl, um alle Deine Daten zu löschen.
 EOF
     );
     $this->getMailer()->send($message);

@@ -5,7 +5,7 @@
  *
  * @package    bahn
  * @subpackage filter
- * @author     Your name here
+ * @author     Marco Schierhorn
  * @version    SVN: $Id$
  */
 abstract class BaseStandorteFormFilter extends BaseFormFilterDoctrine

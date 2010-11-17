@@ -27,7 +27,7 @@ all:
     enabled_modules:        [default, sfCryptoCaptcha]
 
     # Form security secret (CSRF protection)
-    csrf_secret:            5760cd1ee43cc9c9d8624e6eb2f25f58f0fe8113
+    #csrf_secret:            5760cd1ee43cc9c9d8624e6eb2f25f58f0fe8113
 
     # Output escaping settings
     escaping_strategy:      true
