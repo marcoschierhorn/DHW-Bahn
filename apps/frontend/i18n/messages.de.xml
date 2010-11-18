@@ -10,8 +10,8 @@
         <source>Invalid.</source>
         <target>Ungültige E-Mail Adresse.</target>
       </trans-unit>
-      <trans-unit id="USERNAME_PASSWORD_INVALID">
-        <source>An object with the same "email" already exist.</source>
+      <trans-unit id="SAME_OBJECT_IN_DB">
+        <source>An object with the same "%column%" already exist.</source>
         <target>Diese E-Mail Adresse wurde schon einmal verwendet.</target>
       </trans-unit>
       <trans-unit id="STRING_TOO_LONG">

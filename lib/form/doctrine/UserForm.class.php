@@ -21,20 +21,26 @@ class UserForm extends BaseUserForm
       $this['survey_anlaesse_list'],
       $this['survey_angebot_verkehrsmittel12_list'],
       $this['survey_anlaesse_list'],
-      $this['survey_angebot_verkehrsmittel_allgemein_list']
+      $this['survey_angebot_verkehrsmittel_allgemein_list'],
+      $this['survey_gefallen_id']
     );
 
     $this->setWidget('captcha', new sfWidgetFormInput());
-    $this->getWidget('captcha')->setLabel('Bitte geben Sie den Captcha Code ein');
+    $this->getWidget('captcha')->setLabel('Verifikationscode');
     $this->setValidator('captcha', new sfValidatorSfCryptoCaptcha(array('required' => true, 'trim' => true),
-                                                   array('wrong_captcha' => 'Bitte geben Sie einen gültigen Captcha Code ein.',
-                                                         'required' => 'Bitte geben Sie den Captcha Code ein.')));
-
+                                                   array('wrong_captcha' => 'Bitte geben Sie einen gültigen Verifikationscode ein.',
+                                                         'required' => 'Bitte geben Sie den Verifikationscode ein.')));
 
     $this->getValidator('email')->setMessage('invalid', 'Bitte geben Sie eine gültige E-Mail Adresse ein');
     $this->getValidator('plz')->setMessage('invalid', 'Bitte geben Sie eine gültige PLZ ein');
 
-    $this->getWidget('standorte_id')->setLabel('Standort');
+    $this->getWidget('email')->setLabel('E-Mail-Adresse');
+    $this->getWidget('strasse')->setLabel('Straße/Hausnummer');
+    $this->getWidget('standorte_id')->setLabel('Mein Studienort');
+    $this->getWidget('plz')->setLabel('PLZ');
+
+    $this->getValidator('standorte_id')->setOption('required', true);
+
     $this->widgetSchema->setFormFormatterName('Bahn');
 
   }

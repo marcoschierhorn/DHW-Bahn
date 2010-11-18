@@ -26,7 +26,8 @@ class UserSurveyForm extends BaseUserForm
       $this['codes_id'],
       $this['standorte_id'],
       $this['abgemeldet'],
-      $this['survey_id']
+      $this['survey_id'],
+      $this['user_id']
     );
 
     $this->widgetSchema->setNameFormat('user_survey[%s]');
@@ -40,7 +41,7 @@ class UserSurveyForm extends BaseUserForm
     $this->setValidators(array(
       'survey_anlaesse_list'                         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAnlaesse', 'required' => false)),
       'survey_angebot_verkehrsmittel12_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittel12', 'required' => false)),
-      'survey_angebot_verkehrsmittel_allgemein_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittelAllgemein', 'required' => false)),
+      'survey_angebot_verkehrsmittel_allgemein_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittelAllgemein', 'required' => false))
     ));
 
     $this->getWidgetSchema()->setLabels(array(
@@ -56,7 +57,13 @@ class UserSurveyForm extends BaseUserForm
     $newSurvey = new Survey();
     $newSurvey->setUser($this->getObject());
     $form = new SurveyForm($newSurvey);
-    $this->embedForm('', $form);
+    $this->mergeForm($form);
 
+    $newSurveySurveyGefallen = new SurveyGefallen();
+    $newSurveySurveyGefallen->setUser($this->getObject());
+    $formSurveyGefallen = new SurveyGefallenForm($newSurveySurveyGefallen);
+    $this->mergeForm($formSurveyGefallen);
   }
+
+
 }

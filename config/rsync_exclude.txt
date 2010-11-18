@@ -14,3 +14,8 @@ _darcs
 .monotone
 .svn
 CVS
+.gitconfig
+.settings
+.project
+.buildpath
+.gitignore

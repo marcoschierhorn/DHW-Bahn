@@ -14,8 +14,14 @@ generator:
     config:
       actions: ~
       fields:  ~
-      list:    ~
+      list:   
+        title: User Management
+        display: [anrede, Vorname, Nachname, Email, Strasse, Plz, Wohnort, Codes, Standorte, abgemeldet]
+        sort: [created_at, desc]
+        max_per_page: 10
       filter:  ~
       form:    ~
-      edit:    ~
-      new:     ~
+      edit:    
+        title: Edit User "%%name%%"
+      new:     
+        title: Neuer User

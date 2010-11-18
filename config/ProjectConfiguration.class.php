@@ -20,5 +20,7 @@ class ProjectConfiguration extends sfProjectConfiguration
             array('BaseForm', 'listenToPostConfigure')
     );
 
+    $this->enablePlugins('sfDoctrineGuardPlugin');
+    $this->enablePlugins('sfJqueryReloadedPlugin');
   }
 }

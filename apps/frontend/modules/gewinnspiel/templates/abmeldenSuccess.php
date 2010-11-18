@@ -1,3 +1,4 @@
 Hallo <?php echo $user->getFullName();?>,<br/><br/>
-Sie haben sich erfolgreich abgemeldet.<br/><br/>
-Vielen Dank für Ihre Teilnahme.
+Du hast Dich erfolgreich vom „Wohin-Du-willst“-Gewinnspiel abgemeldet.<br/><br/>
+Mit besten Grüßen<br/>
+Dein bahn.de-Team

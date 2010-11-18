@@ -18,6 +18,7 @@ body {
   margin: 0 auto !important;
   width:704px;
   overflow: hidden; 
+  font-size: 11px;
 }
 
 ul ul, ul ol, ul p, ul h3, ol ul, ol ol, ol p, ol h3, ol dl, ul dl, dl ol, dl ul, dl p, blockquote p, table p, button {
@@ -26,7 +27,7 @@ ul ul, ul ol, ul p, ul h3, ol ul, ol ol, ol p, ol h3, ol dl, ul dl, dl ol, dl ul
 
 form {
   font-size: 0.7em;
-  line-height: 1.4em;
+  font-size: 11px;
 }
 .main fieldset {
   background-color:#EAEAEA;
@@ -126,11 +127,11 @@ sup {
   visibility: hidden;
 }
 
-label sup {
+label span sup {
   color:#FF0000;
   font-weight:bold;
   padding:0 3px;
-  display: block;
+  display: inline;
   visibility: visible;
 }
 
@@ -149,13 +150,12 @@ form.dankeUmfrage .radio_list li, form.dankeUmfrage .checkbox_list li {
 form.dankeUmfrage .radio_list input, form.dankeUmfrage .checkbox_list input{
   float: left;
   width: 20px;
-  margin-right: 10px;
 }
 
 form.dankeUmfrage .radio_list label, form.dankeUmfrage .checkbox_list label {
   width: auto;
   float: left;
-  width: 500px;
+  margin:3px 0 0 5px;
 }
 form.dankeUmfrage label {
   float:none;
@@ -165,4 +165,43 @@ form.dankeUmfrage label {
 
 form.dankeUmfrage div.clearfix {
   margin-bottom: 20px;
+}
+
+div.matrix {
+  clear: both;
+}
+
+div.matrix ul li {
+  clear:none !important;
+  float:left !important;
+  list-style-type:none;
+  margin-right:2px;
+  width:80px;
+}
+
+ul.matrixHeader {
+  margin-left:152px;
+  padding:19px;
+}
+
+ul.desc {
+  padding-bottom: 0px;
+}
+
+ul.desc li {
+  padding-bottom: 0px;
+  width: 10px;
+}
+
+ul.matrixHeader li{
+
+}
+.clear {
+  clear: both;
+}
+
+
+div.matrix label {
+  float:left;
+  width:160px;
 }

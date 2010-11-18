@@ -21,4 +21,9 @@ class User extends BaseUser
   {
     return md5($this->getEmail().$this->getCodes()->getName());
   }
+
+  public function getName()
+  {
+    return $this->getVorname().' '.$this->getNachname();
+  }
 }

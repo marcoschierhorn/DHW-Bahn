@@ -37,14 +37,8 @@ captcha_reload_button();
       </fieldset>
 
       <fieldset>
-        <sup>*</sup> Pflichteingaben
+        <label for="Pflichteingaben"><sup>*</sup><span class="form_field_required">Pflichteingaben</span></label><br style="clear: both;"/><br/>
         Hinweis: Das Gewinnspiel läuft bis 30. Januar 2011. Eine Barauszahlung der Gewinne ist nicht möglich. Der Rechtsweg ist ausgeschlossen. Mitarbeiter der Deutschen Bahn AG sowie deren Angehörige dürfen nicht teilnehmen. Die Gewinner werden unter allen Teilnehmern ausgelost. Die Gewinner werden per Post benachrichtigt. Das Versandrisiko wird von uns nicht übernommen. Ihre Daten werden ausschließlich für die Abwicklung des Gewinnspiels sowie für anonymisierte Marktforschungszwecke verwendet. Im Umgang mit Ihren persönlichen Daten werden selbstverständlich alle Vorgaben des <span class="texturl"><a target="_blank" href="http://www.bahn.de/p/view/home/info/schutz.shtml">Datenschutzes</a></span> beachtet.
-      </fieldset>
-
-      <fieldset>
-        <strong>Willst du auch zukünftig bestens über aktuelle Angebote und Gewinnspiele auf bahn.de informiert sein? Dann melde dich hiermit gleich zu unserem bahn.de-Newsletter an.</strong>
-        <br/>
-        Ich möchte gerne regelmäßig den kostenlosen Newsletter von www.bahn.de per E-Mail erhalten. Damit werden Sie regelmäßig per E-Mail über Neuheiten, Sonderangebote und Gewinnspiele informiert. Dieser kostenlose Service kann in jedem Newsletter oder jederzeit unter www.bahn.de/newsletter wieder abbestellt werden.
       </fieldset>
 
       <fieldset>

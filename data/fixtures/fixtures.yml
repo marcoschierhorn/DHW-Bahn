@@ -80,7 +80,7 @@ SurveyAnlaesse:
 Codes:
   Codes_1:
     name: 6VCRZHG5
-    used: false
+    used: true
     created_at: '0000-00-00 00:00:00'
     updated_at: '0000-00-00 00:00:00'
   Codes_2:
@@ -104,8 +104,8 @@ Codes:
     created_at: '0000-00-00 00:00:00'
     updated_at: '0000-00-00 00:00:00'
 Standorte:
-  Standorte_1:
-    name: 'Rheinisch Westfälische Technische Hochschule Aachen'
+  Standort_1:
+    name: 'anderer Studienort'
   Standorte_2:
     name: 'Technische Universität Berlin'
   Standorte_3:
@@ -164,6 +164,8 @@ Standorte:
     name: 'Westfälische-Wilhelms-Universität Münster'
   Standorte_30:
     name: 'Universität des Saarlandes'
+  Standorte_31:
+    name: 'Rheinisch Westfälische Technische Hochschule Aachen'
 User:
   User_1:
     anrede: Herr
@@ -178,3 +180,16 @@ User:
     abgemeldet: false
     created_at: '2010-11-17 16:57:30'
     updated_at: '2010-11-17 16:57:30'
+sfGuardUser:
+  sfGuardUser_1:
+    first_name: Marco
+    last_name: Schierhorn
+    email_address: marco.schierhorn@gmail.com
+    username: marco
+    salt: 33ab17adc89fd6b828a14581ce3cb0c2
+    password: d1c98e1f7daac4716a04b3617a0ac731072a04c4
+    is_active: true
+    is_super_admin: true
+    last_login: '2010-11-18 11:22:06'
+    created_at: '2010-11-18 10:56:22'
+    updated_at: '2010-11-18 11:22:06'

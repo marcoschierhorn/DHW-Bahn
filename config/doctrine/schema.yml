@@ -78,6 +78,43 @@ Codes:
       type: boolean
       default: false
 
+SurveyGefallen:
+  columns:
+    id:
+      type: integer(6)
+      primary: true
+      autoincrement: true
+    preislich:
+      type: enum
+      notnull: true
+      values: [5, 4, 3, 2, 1, 98]
+    spontan:
+      type: enum
+      notnull: true
+      values: [5, 4, 3, 2, 1, 98]
+    gutes_angebot:
+      type: enum
+      notnull: true
+      values: [5, 4, 3, 2, 1, 98]
+    freunden:
+      type: enum
+      notnull: true
+      values: [5, 4, 3, 2, 1, 98]
+    entfernung:
+      type: enum
+      notnull: true
+      values: [5, 4, 3, 2, 1, 98]
+    junge:
+      type: enum
+      notnull: true
+      values: [5, 4, 3, 2, 1, 98]
+    user_id:
+        type: integer(6)
+        notnull: true
+  relations:
+    User:
+      foreignType: one
+
 SurveyAngebotBekannt:
   columns:
     id:

@@ -23,6 +23,7 @@
  * @property Doctrine_Collection $SurveyAngebotVerkehrsmittel12
  * @property Doctrine_Collection $SurveyAngebotVerkehrsmittelAllgemein
  * @property Survey $Survey
+ * @property SurveyGefallen $SurveyGefallen
  * 
  * @method integer             getId()                                   Returns the current record's "id" value
  * @method enum                getAnrede()                               Returns the current record's "anrede" value
@@ -42,6 +43,7 @@
  * @method Doctrine_Collection getSurveyAngebotVerkehrsmittel12()        Returns the current record's "SurveyAngebotVerkehrsmittel12" collection
  * @method Doctrine_Collection getSurveyAngebotVerkehrsmittelAllgemein() Returns the current record's "SurveyAngebotVerkehrsmittelAllgemein" collection
  * @method Survey              getSurvey()                               Returns the current record's "Survey" value
+ * @method SurveyGefallen      getSurveyGefallen()                       Returns the current record's "SurveyGefallen" value
  * @method User                setId()                                   Sets the current record's "id" value
  * @method User                setAnrede()                               Sets the current record's "anrede" value
  * @method User                setVorname()                              Sets the current record's "vorname" value
@@ -60,6 +62,7 @@
  * @method User                setSurveyAngebotVerkehrsmittel12()        Sets the current record's "SurveyAngebotVerkehrsmittel12" collection
  * @method User                setSurveyAngebotVerkehrsmittelAllgemein() Sets the current record's "SurveyAngebotVerkehrsmittelAllgemein" collection
  * @method User                setSurvey()                               Sets the current record's "Survey" value
+ * @method User                setSurveyGefallen()                       Sets the current record's "SurveyGefallen" value
  * 
  * @package    bahn
  * @subpackage model
@@ -178,6 +181,10 @@ abstract class BaseUser extends sfDoctrineRecord
         $this->hasOne('Survey', array(
              'local' => 'survey_id',
              'foreign' => 'id'));
+
+        $this->hasOne('SurveyGefallen', array(
+             'local' => 'id',
+             'foreign' => 'user_id'));
 
         $timestampable0 = new Doctrine_Template_Timestampable(array(
              ));

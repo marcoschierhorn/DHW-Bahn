@@ -1,3 +1,12 @@
+standorte:
+  class: sfDoctrineRouteCollection
+  options:
+    model:                Standorte
+    module:               Standorte
+    prefix_path:          /Standorte
+    column:               id
+    with_wildcard_routes: true
+
 user:
   class: sfDoctrineRouteCollection
   options:
