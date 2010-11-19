@@ -133,21 +133,22 @@ class UserSurveyForm extends BaseUserForm
         $user   = Doctrine_Core::getTable('User')->find(array($this->object->getId()));
         if (!is_null($survey = Doctrine_Core::getTable('Survey')->find(array($user->getSurveyId()))))
         {
+
           if (!$survey instanceof Survey)
           {
             $survey = new Survey();
           }
+
           $values = $this->getValues();
           $survey->fromArray($values);
           $survey->save();
+
           $this->object->setSurveyId($survey->getId());
-          $this->object->setSurvey($survey);
           $this->object->save();
         }
       }
   	}
-
-  	if ((int) $this->getOption('step', 1)==2)
+  	else if ((int) $this->getOption('step', 1)==2)
   	{
   	  // update user info
       if (!is_null($surveyGefallen = $this->getObject()->getSurveyGefallen()))
@@ -159,9 +160,13 @@ class UserSurveyForm extends BaseUserForm
         }
         $surveyGefallen->fromArray($values);
         $surveyGefallen->save();
-        $this->object->save();
       }
   	}
+  	else
+  	{
+  	  $this->saveEmbeddedForms($con);
+  	}
+
   	return $this->object;
   }
 
