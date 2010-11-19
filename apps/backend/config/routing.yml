@@ -22,13 +22,13 @@ user:
 # default rules
 homepage:
   url:   /
-  param: { module: default, action: index }
+  param: { module: User, action: index }
 
 # generic rules
 # please, remove them by adding more specific rules
 default_index:
-  url:   /:module
-  param: { action: index }
+  url:   /User
+  param: { module: User, action: index }
 
 default:
   url:   /:module/:action/*

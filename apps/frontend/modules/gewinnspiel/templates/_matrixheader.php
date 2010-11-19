@@ -14,3 +14,4 @@
   <li>1</li>
   <li></li>
 </ul>
+<br class="clear" />

@@ -1,19 +1,4 @@
-<?php use_stylesheets_for_form($form) ?>
-<?php use_javascripts_for_form($form) ?>
-<?php use_helper('jQuery') ?>
-  <script type="text/javascript">
-
-    $(document).ready(function() {
-
-      $('#survey_angebot_bekannt_id_4').change(function() {
-        $('#vergleichbarereise').toggle();
-      });
-
-    });
-
-
-  </script>
-
+<p>
   <?php if (isset($user) && is_object($user) && $user->getAnrede()=='Herr'): ?>
   Lieber Gewinnspielteilnehmer,
   <?php else: ?>
@@ -36,8 +21,15 @@
   <br/><br/>
   Dein bahn.de-Team
   <br/><br/>
-  <?php echo link_to('„Hier geht´s zur Umfrage“', 'gewinnspiel/umfrage?id='.$form->getObject()->getId().'&step=1');?>
-  <br/><br/>
+  <div class="button-inside">
+    <!-- Submit -->
+    <span class="button-border right">
+      <button type="submit" name="startbutton" class="highlight" value="1" title="Hier geht's zur Umfrage" onclick="location.href='<?php echo url_for('gewinnspiel/umfrage?id='.$user->getId().'&step=1', true)?>'">
+        <span>Hier geht's zur Umfrage</span>
+      </button>
+    </span>
+  </div>
+</p>
 <?php /*?>
 <form class="dankeUmfrage" action="<?php echo url_for('gewinnspiel/danke'.(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 

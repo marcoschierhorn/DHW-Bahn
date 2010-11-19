@@ -1,6 +1,12 @@
 # You can find more information about this file on the symfony website:
 # http://www.symfony-project.org/reference/1_4/en/05-Factories
 
+all:
+  storage:
+    class: sfSessionStorage
+    param:
+      session_name: bahn
+
 prod:
   logger:
     class:   sfNoLogger
@@ -22,7 +28,7 @@ test:
 
 dev:
   mailer:
-    class: sfMailer
+    class: dhwMailer
     param:
       logging:           %SF_LOGGING_ENABLED%
       charset:           %SF_CHARSET%
@@ -33,8 +39,24 @@ dev:
           host:       smtprelaypool.ispgateway.de
           port:       465
           encryption: ssl
-          username:   m.schierhorn@esv-media.de
-          password:   Goldstar
+          username:   wohin-du-willst@bahn.unispezial.de
+          password:   T4qv2ygY
+
+prod:
+  mailer:
+    class: dhwMailer
+    param:
+      logging:           %SF_LOGGING_ENABLED%
+      charset:           %SF_CHARSET%
+      delivery_strategy: realtime
+      transport:
+        class: Swift_SmtpTransport
+        param:
+          host:       smtprelaypool.ispgateway.de
+          port:       465
+          encryption: ssl
+          username:   wohin-du-willst@bahn.unispezial.de
+          password:   T4qv2ygY
 
 all:
   routing:

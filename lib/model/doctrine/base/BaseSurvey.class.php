@@ -38,6 +38,7 @@ abstract class BaseSurvey extends sfDoctrineRecord
         $this->hasColumn('id', 'integer', 6, array(
              'type' => 'integer',
              'primary' => true,
+             'autoincrement' => true,
              'length' => 6,
              ));
         $this->hasColumn('survey_angebot_bekannt_id', 'integer', 2, array(

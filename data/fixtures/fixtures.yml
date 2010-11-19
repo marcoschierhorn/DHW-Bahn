@@ -103,91 +103,83 @@ Codes:
     used: false
     created_at: '0000-00-00 00:00:00'
     updated_at: '0000-00-00 00:00:00'
+
 Standorte:
-  Standort_1:
+  Standorte_1:
     name: 'anderer Studienort'
   Standorte_2:
-    name: 'Technische Universität Berlin'
+    name: Aachen
   Standorte_3:
-    name: 'Universität Bielefeld'
+    name: Berlin
   Standorte_4:
-    name: 'Ruhr-Universität Bochum'
+    name: Bielefeld
   Standorte_5:
-    name: 'Technische Universität Braunschweig'
+    name: Bochum
   Standorte_6:
-    name: 'Universität Bremen'
+    name: Braunschweig
   Standorte_7:
-    name: 'Technische Universität Chemnitz'
+    name: Bremen
   Standorte_8:
-    name: 'Technische Universität Darmstadt'
+    name: Chemnitz
   Standorte_9:
-    name: 'Technische Universität Dresden'
+    name: Darmstadt
   Standorte_10:
-    name: 'Heinrich-Heine-Universität Düsseldorf'
+    name: Dresden
   Standorte_11:
-    name: 'Friedrich-Alexander-Universität Erlangen-Nürnberg'
+    name: Duesseldorf
   Standorte_12:
-    name: 'Johann-Wolfgang-Goethe-Universität Frankfurt am Main'
+    name: 'Erlangen-Nuernberg'
   Standorte_13:
-    name: 'Albert-Ludwigs-Universität Freiburg'
+    name: 'Frankfurt am Main'
   Standorte_14:
-    name: 'Justus-Liebig-Universität Gießen'
+    name: Freiburg
   Standorte_15:
-    name: 'Georg-August-Universität Göttingen'
+    name: Giessen
   Standorte_16:
-    name: 'Hochschule für Angewandte Wissenschaften Hamburg'
+    name: Goettingen
   Standorte_17:
-    name: 'Leibniz Universität Hannover'
+    name: Hamburg
   Standorte_18:
-    name: 'Ruprecht-Karls-Universität Heidelberg'
+    name: Hannover
   Standorte_19:
-    name: 'KIT (Universität) Karlsruhe'
+    name: Heidelberg
   Standorte_20:
-    name: 'Universität Kassel'
+    name: Karlsruhe
   Standorte_21:
-    name: 'Christian-Albrechts-Universität zu Kiel'
+    name: Kassel
   Standorte_22:
-    name: 'Universität zu Köln'
+    name: Kiel
   Standorte_23:
-    name: 'Universität Konstanz'
+    name: Koeln
   Standorte_24:
-    name: 'Universität Mannheim'
+    name: Konstanz
   Standorte_25:
-    name: 'Fachhochschule München'
+    name: Mannheim
   Standorte_26:
-    name: 'Ludwig-Maximilians-Universität München'
+    name: Muenchen
   Standorte_27:
-    name: 'Technische Universität München'
+    name: Muenster
   Standorte_28:
-    name: 'Fachhochschule Münster'
-  Standorte_29:
-    name: 'Westfälische-Wilhelms-Universität Münster'
-  Standorte_30:
-    name: 'Universität des Saarlandes'
-  Standorte_31:
-    name: 'Rheinisch Westfälische Technische Hochschule Aachen'
-User:
-  User_1:
-    anrede: Herr
-    vorname: Marco
-    nachname: Schierhorn
-    email: marco.schierhorn@gmail.com
-    strasse: 'Tannenstraße 51'
-    plz: '40474'
-    wohnort: Düsseldorf
-    Codes: Codes_1
-    Standorte: Standorte_10
-    abgemeldet: false
-    created_at: '2010-11-17 16:57:30'
-    updated_at: '2010-11-17 16:57:30'
+    name: Saarbruecken
+
 sfGuardUser:
   sfGuardUser_1:
     first_name: Marco
     last_name: Schierhorn
     email_address: marco.schierhorn@gmail.com
     username: marco
-    salt: 33ab17adc89fd6b828a14581ce3cb0c2
-    password: d1c98e1f7daac4716a04b3617a0ac731072a04c4
+    password: LuckyLux
+    is_active: true
+    is_super_admin: true
+    last_login: '2010-11-18 11:22:06'
+    created_at: '2010-11-18 10:56:22'
+    updated_at: '2010-11-18 11:22:06'
+  sfGuardUser_2:
+    first_name: Ioannis
+    last_name: Voudouris
+    email_address: i.voudouris@hochschulwerbung.de
+    username: ivoudouris
+    password: Style2000
     is_active: true
     is_super_admin: true
     last_login: '2010-11-18 11:22:06'

@@ -1,6 +1,6 @@
 CREATE TABLE codes (id BIGINT AUTO_INCREMENT, name VARCHAR(255), used TINYINT(1) DEFAULT '0', created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE standorte (id SMALLINT AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
-CREATE TABLE survey (id BIGINT, survey_angebot_bekannt_id SMALLINT, survey_angebot_vergleichbare_reise_id SMALLINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX survey_angebot_bekannt_id_idx (survey_angebot_bekannt_id), INDEX survey_angebot_vergleichbare_reise_id_idx (survey_angebot_vergleichbare_reise_id), PRIMARY KEY(id)) ENGINE = INNODB;
+CREATE TABLE survey (id BIGINT AUTO_INCREMENT, survey_angebot_bekannt_id SMALLINT, survey_angebot_vergleichbare_reise_id SMALLINT, created_at DATETIME NOT NULL, updated_at DATETIME NOT NULL, INDEX survey_angebot_bekannt_id_idx (survey_angebot_bekannt_id), INDEX survey_angebot_vergleichbare_reise_id_idx (survey_angebot_vergleichbare_reise_id), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE survey_angebot_bekannt (id SMALLINT AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE survey_angebot_vergleichbare_reise (id SMALLINT AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;
 CREATE TABLE survey_angebot_verkehrsmittel12 (id SMALLINT AUTO_INCREMENT, name VARCHAR(255), PRIMARY KEY(id)) ENGINE = INNODB;

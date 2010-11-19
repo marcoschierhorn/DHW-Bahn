@@ -9,8 +9,26 @@
     <?php include_javascripts() ?>
   </head>
   <body>
-    <div class="main">
-      <?php echo $sf_content ?>
+    <div id="content">
+      <div class="sidebar-left">
+        <div class="box">
+          <div class="section clearfix">
+            <div class="col first">
+              <?php if ($sf_request->getParameter('action')=='index' || $sf_request->getParameter('action')=='create'):?>
+                <h1>Mit dem Quer-durchs-Land-Ticket gewinnen!</h1>
+              <?php else: ?>
+                <h1>Vielen Dank für deine Teilnahme am Quer-durchs-Land-Gewinnspiel!</h1>
+              <?php endif;?>
+            </div>
+          </div>
+          <div class="section clearfix">
+          <div class="col first">
+              <img width="704" height="176" class="teaser-with-text" alt="Quer-durchs-Land-Ticket - Zug" src="/images/MDB83384-quer_durchs_land_ticket_4_1_704x176.jpg" />
+          </div>
+          </div>
+          <?php echo $sf_content ?>
+        </div>
+      </div>
     </div>
   </body>
 </html>

@@ -12,13 +12,14 @@ class gewinnspielActions extends sfActions
 {
   public function executeIndex(sfWebRequest $request)
   {
+    /*
     $q = Doctrine::getTable('Codes')
       ->createQuery('c')
       ->orderBy('RAND()')
       ->where('c.used != 1')
       ->limit(1);
      $code = $q->fetchOne();
-
+		*/
     $this->form = new UserForm();
   }
 
@@ -35,12 +36,12 @@ class gewinnspielActions extends sfActions
 
   public function executeDankeUmfrage(sfWebRequest $request)
   {
-    $this->forward404Unless($this->user = Doctrine_Core::getTable('User')->find(array($request->getParameter('id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
+
   }
 
   public function executeDanke(sfWebRequest $request)
   {
-    $this->forward404Unless($this->user = Doctrine_Core::getTable('User')->find(array($request->getParameter('id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
+    $this->forward404Unless($this->user = Doctrine_Core::getTable('User')->find(array($this->getUser()->getAttribute('user_id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
   }
 
   protected function processForm(sfWebRequest $request, sfForm $form)
@@ -66,72 +67,76 @@ class gewinnspielActions extends sfActions
 
       $this->sendCouponEmail($user);
 
-      $this->redirect('gewinnspiel/danke?id='.$user->getId());
+      $this->getUser()->setAttribute('user_id', $user->getId());
+      $this->getUser()->setAttribute('show4', false);
+      $this->redirect('gewinnspiel/danke');
     }
   }
 
   public function executeUmfrage(sfWebRequest $request)
   {
-    $this->forward404Unless($this->user = Doctrine_Core::getTable('User')->find(array($request->getParameter('id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
-    $this->form = new UserSurveyForm($this->user = Doctrine_Core::getTable('User')->find(array($request->getParameter('id', 1))));
 
-    $this->formPartial = 'umfrageNormal';
-
-    switch ($request->getParameter('step', 1))
+    if (!$this->getUser()->hasAttribute('user_id') || (int) $this->getUser()->getAttribute('user_id') <= 0)
     {
-      case 1:    $this->processStep1($request, $this->form, $this->user);
-      break;
-      case 2:    $this->processStep2($request, $this->form, $this->user);
-      break;
-      case 3:    $this->processStep3($request, $this->form, $this->user);
-      break;
-      case 4:    $this->processStep4($request, $this->form, $this->user);
-      break;
-      case 5:    $this->processStep5($request, $this->form, $this->user);
-      break;
-      case 6:    $this->processStep6($request, $this->form, $this->user);
-      break;
+      $this->redirect('gewinnspiel/index');
     }
 
-    //$this->redirect('gewinnspiel/umfrage?id='.$user->getId().'&step='.$this->nextStep);
+    $this->forward404Unless($this->user = Doctrine_Core::getTable('User')->find(array($this->getUser()->getAttribute('user_id'))), sprintf('Object user does not exist (%s).', $request->getParameter('id')));
 
+    if ($this->getUser()->hasAttribute('lastStep'))
+    {
+      if ((int) $this->getUser()->getAttribute('lastStep') + 2 < (int) $request->getParameter('step', 1))
+      {
+        $this->redirect('gewinnspiel/umfrage?step='.intval($this->getUser()->getAttribute('lastStep')+1));
+      }
+    }
+
+    $this->form = new UserSurveyForm($this->user, array('step' => $request->getParameter('step', 1)));
+
+    if ((int) $request->getParameter('step', 1)>1)
+      $this->oldForm = new UserSurveyForm($this->user, array('step' => intval($request->getParameter('step', 1)-1)));
+    else
+      $this->oldForm = null;
+
+    $this->nextStep = intval($request->getParameter('step', 1))+1;
+
+    $this->formPartial = $this->form->formPartial;
+
+    $this->processUmfrageForm($request, $this->form, $this->oldForm, $this->user);
+
+    if ((int) $request->getParameter('step', 1)==2)
+    {
+      if ((int) $this->oldForm->getValue('survey_angebot_bekannt_id')==4)
+      {
+        $this->getUser()->setAttribute('show4', true);
+      }
+    }
+
+    if ((int) $request->getParameter('step', 1)==3 && $this->getUser()->getAttribute('show4')==false)
+    {
+      $this->getUser()->setAttribute('lastStep', 4);;
+      $this->nextStep = 5;
+    }
+
+    if ((int) $request->getParameter('step', 1)>6)
+    {
+      $this->getUser()->setAttribute('user_id', false);
+      $this->redirect('gewinnspiel/dankeUmfrage?id='.$this->user->getId());
+    }
   }
 
-  protected function processStep1(sfWebRequest $request, sfForm $form, User $user)
+  protected function processUmfrageForm(sfWebRequest $request, sfForm $form, $oldForm = null, User $user)
   {
-    $form->useFields(array('survey_angebot_bekannt_id'));
-    $this->nextStep = 2;
+    if ($oldForm!=null)
+    {
+      $oldForm->bind($request->getParameter($oldForm->getName()), $request->getFiles($oldForm->getName()));
 
-  }
-
-  protected function processStep2(sfWebRequest $request, sfForm $form, User $user)
-  {
-    $form->useFields(array('survey_angebot_bekannt_id'));
-    $this->nextStep = 3;
-  }
-
-  protected function processStep3(sfWebRequest $request, sfForm $form, User $user)
-  {
-    $form->useFields(array('survey_angebot_bekannt_id'));
-    $this->nextStep = 4;
-  }
-
-  protected function processStep4(sfWebRequest $request, sfForm $form, User $user)
-  {
-    $form->useFields(array('survey_angebot_bekannt_id'));
-    $this->nextStep = 5;
-  }
-
-  protected function processStep5(sfWebRequest $request, sfForm $form, User $user)
-  {
-    $form->useFields(array('survey_angebot_bekannt_id'));
-    $this->nextStep = 6;
-  }
-
-  protected function processStep6(sfWebRequest $request, sfForm $form, User $user)
-  {
-    $form->useFields(array('survey_angebot_bekannt_id'));
-    $this->nextStep = 7;
+      if ($oldForm->isValid())
+      {
+        $oldForm->save();
+        $this->getUser()->setAttribute('lastStep', (int) $oldForm->getOption('step'));
+      }
+    }
   }
 
   public function executeAbmelden(sfWebRequest $request)
@@ -141,7 +146,6 @@ class gewinnspielActions extends sfActions
 
     $this->user->setAbgemeldet(true);
     $this->user->save();
-
   }
 
   function sendCouponEmail(User $user)
@@ -151,11 +155,11 @@ class gewinnspielActions extends sfActions
     $username   = $user->getFullName();
     $couponCode = $user->getCodes()->getName();
 
-
     $message = $this->getMailer()->compose(
-      array('m.schierhorn@esv-media.de' => 'Marco Schierhorn'),
+      array('wohin-du-willst@deutschebahn.com' => 'Quer-durchs-Land'),
       $user->getEmail(),
       'Teilnahmebestätigung und Rabatt-Coupon für ein Quer-durchs-Land-Ticket!',
+      'wohin-du-willst@bahn.unispezial.de',
       <<<EOF
 Hallo $username,
 

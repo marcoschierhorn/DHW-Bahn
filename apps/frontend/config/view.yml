@@ -12,9 +12,9 @@ default:
     language:     de
     robots:       nofollow
 
-  stylesheets:    [main.css]
+  stylesheets:    [http://www.bahn.de/common/view/static/v8/css/bahn.1288860322.min.css, http://www.bahn.de/common/view/static/v8/css/bahn-dyn.1288860322.min.css, main.css]
 
-  javascripts:    []
+  javascripts:    [http://www.bahn.de/common/view/static/v8/js/jquery-1.2.6.min.js, http://www.bahn.de/common/view/static/v8/js/bahn.1288860322.min.js, http://www.bahn.de/common/view/static/v8/js/s_code_20100907.js]
 
   has_layout:     true
   layout:         layout

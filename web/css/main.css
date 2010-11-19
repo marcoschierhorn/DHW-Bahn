@@ -2,124 +2,143 @@ ul.error_list {
   float: none;
   margin-left: 178px;
   color: red;
- list-style-type: square;
- padding-left: 16px;
+  list-style-type: square;
+}
+
+html {
+  background-color:#FFFFFF;
 }
 
 body {
   margin: 0;
   padding: 0;
-  color:#333333;
-  font-family:Arial,sans-serif;
-  font-size:16px;
+  color: #333333;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  background-color: #FFFFFF;
+  width: 704px;
+  margin: 0 auto;
 }
 
-.main {
+.box {
   margin: 0 auto !important;
-  width:704px;
-  overflow: hidden; 
-  font-size: 11px;
+  width: 704px;
+  overflow: hidden;
+  /*font-size: 11px;*/
 }
 
-ul ul, ul ol, ul p, ul h3, ol ul, ol ol, ol p, ol h3, ol dl, ul dl, dl ol, dl ul, dl p, blockquote p, table p, button {
-  font-size:1em;
+ul ul,ul ol,ul p,ul h3,ol ul,ol ol,ol p,ol h3,ol dl,ul dl,dl ol,dl ul,dl p,blockquote p,table p,button
+  {
+  font-size: 1em;
 }
 
 form {
   font-size: 0.7em;
   font-size: 11px;
 }
-.main fieldset {
-  background-color:#EAEAEA;
-  border:1px solid #FFFFFF;
-  padding:8px;
+
+.box fieldset {
+  background-color: #EAEAEA;
+  border: 1px solid #FFFFFF;
+  padding: 8px;
 }
 
 div.clearfix {
-  margin-bottom:5px;
+  margin-bottom: 5px;
 }
 
 div.separator {
-  padding-top:8px;
+  padding-top: 8px;
 }
 
-div.main label {
-  display:block;
-  float:left;
-  padding-right:8px;
-  width:170px;
+div.box label {
+  display: block;
+  float: left;
+  padding-right: 8px;
+  width: 170px;
 }
 
 div.captcha {
   margin-left: 178px;
 }
 
-input, textarea, select {
-  font-family:inherit;
-  font-size:inherit;
-  font-weight:inherit;
+input,textarea,select {
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
 }
 
-div.main input {
-  margin:2px 0;
+div.box input {
+  margin: 2px 0;
 }
 
 .button-inside {
-  padding-bottom:5px;
+  padding-bottom: 5px;
 }
 
 .button-inside span.button-border {
-  background-color:#D2D2D2;
-  display:block;
-  float:left;
-  position:relative;
+  background-color: #D2D2D2;
+  display: block;
+  float: left;
+  position: relative;
 }
 
 .button-inside span.right {
-  float:right;
+  float: right;
 }
 
-
-.button-inside span.button-border button, .button-inside span.button-border input.button, .button-inside span.button-border a {
-  background:url("http://www.bahn.de/common/view/static/v8/img/gradients-bg.png") no-repeat scroll -2100px 50% #E4421C;
-  border-color:-moz-use-text-color #B0B0B0 #B0B0B0 -moz-use-text-color;
-  border-style:none solid solid none;
-  border-width:medium 1px 1px medium;
-  color:#FFFFFF;
-  cursor:pointer;
-  display:block;
-  font-weight:bold;
-  left:-1px;
-  letter-spacing:1px;
-  margin:0;
-  padding:2px 5px 3px;
-  position:relative;
-  text-decoration:none;
-  top:-1px;
+.button-inside span.button-border button,.button-inside span.button-border input.button,.button-inside span.button-border a
+  {
+  background:
+    url("http://www.bahn.de/common/view/static/v8/img/gradients-bg.png")
+    no-repeat scroll -2100px 50% #E4421C;
+  border-color: -moz-use-text-color #B0B0B0 #B0B0B0 -moz-use-text-color;
+  border-style: none solid solid none;
+  border-width: medium 1px 1px medium;
+  color: #FFFFFF;
+  cursor: pointer;
+  display: block;
+  font-weight: bold;
+  left: -1px;
+  letter-spacing: 1px;
+  margin: 0;
+  padding: 2px 5px 3px;
+  position: relative;
+  text-decoration: none;
+  top: -1px;
 }
 
-.button-inside span.button-border button, .button-inside span.button-border input.button {
-  border:0 none;
-  cursor:pointer;
-  display:inline;
-  margin:0;
+.button-inside span.button-border button,.button-inside span.button-border input.button
+  {
+  border: 0 none;
+  cursor: pointer;
+  display: inline;
+  margin: 0;
 }
 
-.button-inside span.button-border a span, .button-inside span.button-border button span, .button-inside span.button-border input.button span {
-  background:url("http://www.bahn.de/common/view/static/v8/img/icons.gif") no-repeat scroll left -2298px transparent;
-  display:block;
-  padding-left:18px;
+.button-inside span.button-border a span,.button-inside span.button-border button span,.button-inside span.button-border input.button span
+  {
+  background:
+    url("http://www.bahn.de/common/view/static/v8/img/icons.gif")
+    no-repeat scroll left -2298px transparent;
+  display: block;
+  padding-left: 18px;
 }
-.button-inside span.button-border button, .button-inside span.button-border input.button, .button-inside span.button-border a {
-  border-style:none solid solid none;
-  color:#FFFFFF;
-  cursor:pointer;
-  font-weight:bold;
-  letter-spacing:1px;
-  text-decoration:none;
+
+.button-inside span.button-border button,.button-inside span.button-border input.button,.button-inside span.button-border a
+  {
+  border-style: none solid solid none;
+  color: #FFFFFF;
+  cursor: pointer;
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-decoration: none;
 }
-.button-inside span.button-border button, .button-inside span.button-border input.button {
-  cursor:pointer;
+
+.button-inside span.button-border button,.button-inside span.button-border input.button
+{
+  cursor: pointer;
+  font-size:11px;
 }
 
 sup {
@@ -127,38 +146,42 @@ sup {
   visibility: hidden;
 }
 
-label span sup {
-  color:#FF0000;
-  font-weight:bold;
-  padding:0 3px;
+label sup {
+  color: #FF0000;
+  font-weight: bold;
+  padding: 0 3px;
   display: inline;
   visibility: visible;
+  vertical-align:top;
 }
 
-form.dankeUmfrage .radio_list, form.dankeUmfrage .checkbox_list {
+form.dankeUmfrage .radio_list,form.dankeUmfrage .checkbox_list {
   float: none;
   list-style-type: none;
   padding-left: 16px;
 }
 
-form.dankeUmfrage .radio_list li, form.dankeUmfrage .checkbox_list li {
+form.dankeUmfrage .radio_list li,form.dankeUmfrage .checkbox_list li {
   float: none;
   clear: both;
   margin-bottom: 10px;
 }
 
-form.dankeUmfrage .radio_list input, form.dankeUmfrage .checkbox_list input{
+form.dankeUmfrage .radio_list input,form.dankeUmfrage .checkbox_list input
+  {
   float: left;
   width: 20px;
 }
 
-form.dankeUmfrage .radio_list label, form.dankeUmfrage .checkbox_list label {
+form.dankeUmfrage .radio_list label,form.dankeUmfrage .checkbox_list label
+  {
   width: auto;
   float: left;
-  margin:3px 0 0 5px;
+  margin: 3px 0 0 5px;
 }
+
 form.dankeUmfrage label {
-  float:none;
+  float: none;
   width: auto;
   margin-bottom: 4px;
 }
@@ -171,17 +194,20 @@ div.matrix {
   clear: both;
 }
 
+ul li {
+  font-size: 11px;
+}
+
 div.matrix ul li {
   clear:none !important;
   float:left !important;
   list-style-type:none;
   margin-right:2px;
-  width:80px;
+  width:82px;
 }
 
 ul.matrixHeader {
-  margin-left:152px;
-  padding:19px;
+  float:right;
 }
 
 ul.desc {
@@ -193,15 +219,36 @@ ul.desc li {
   width: 10px;
 }
 
-ul.matrixHeader li{
-
+ul.matrixHeader li {
+  margin-left:-1px;
 }
+
 .clear {
   clear: both;
 }
 
-
 div.matrix label {
-  float:left;
-  width:160px;
+  float: left;
+  width: 160px;
+}
+
+div.matrix .radio_list {
+  float:right;
+  list-style-type:none;
+  margin-left: 0;
+  padding-left:0;
+}
+
+#content div.box {
+  border: 0;
+  padding: 0;
+  width: 704px;
+}
+
+#content {
+  margin:0 auto;
+  overflow:hidden;
+  padding:0;
+  position:relative;
+  width:704px;
 }

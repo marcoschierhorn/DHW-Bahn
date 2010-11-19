@@ -1,16 +1,13 @@
-<?php use_stylesheets_for_form($form) ?>
-<?php use_javascripts_for_form($form) ?>
 <?php
 // in the head of your template, call the helper
 use_helper('sfCryptoCaptcha');
-
 //the helper functions
 captcha_image();
 captcha_reload_button();
 ?>
 
 
-<form action="<?php echo url_for('gewinnspiel/'.($form->getObject()->isNew() ? 'create' : 'update').(!$form->getObject()->isNew() ? '?id='.$form->getObject()->getId() : '')) ?>" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
+<form action="<?php echo url_for('gewinnspiel/'.($form->getObject()->isNew() ? 'create' : 'update')) ?>#gewinnspiel" method="post" <?php $form->isMultipart() and print 'enctype="multipart/form-data" ' ?>>
 
     <?php echo $form->renderHiddenFields(false) ?>
 

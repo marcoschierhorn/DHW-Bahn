@@ -195,6 +195,7 @@ Survey:
     id:
       type: integer(6)
       primary: true
+      autoincrement: true  
     survey_angebot_bekannt_id:
       type: integer(2)
       notnull: false

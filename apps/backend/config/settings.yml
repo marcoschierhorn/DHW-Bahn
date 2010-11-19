@@ -41,3 +41,7 @@ all:
     login_module:    sfGuardAuth
     login_action:    signin
     
+    error_404_module:       gewinnspiel
+    error_404_action:       index
+    
+    
