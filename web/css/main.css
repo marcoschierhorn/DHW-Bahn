@@ -167,6 +167,12 @@ form.dankeUmfrage .radio_list li,form.dankeUmfrage .checkbox_list li {
   margin-bottom: 10px;
 }
 
+form.dankeUmfrage .radio_list li
+{
+	overflow: hidden;
+	width: 635px;
+}
+
 form.dankeUmfrage .radio_list input,form.dankeUmfrage .checkbox_list input
   {
   float: left;
@@ -174,10 +180,10 @@ form.dankeUmfrage .radio_list input,form.dankeUmfrage .checkbox_list input
 }
 
 form.dankeUmfrage .radio_list label,form.dankeUmfrage .checkbox_list label
-  {
-  width: auto;
-  float: left;
-  margin: 3px 0 0 5px;
+ {
+  float:left;
+  margin:2px 0 0 5px;
+  width:495px;
 }
 
 form.dankeUmfrage label {
@@ -186,12 +192,29 @@ form.dankeUmfrage label {
   margin-bottom: 4px;
 }
 
+form.dankeUmfrage {
+	width: 638px;
+  overflow: hidden;
+}
+
 form.dankeUmfrage div.clearfix {
   margin-bottom: 20px;
+  width: 639px;
+  overflow: hidden;
+}
+
+div.matrix li label
+{
+	display: none !important;
 }
 
 div.matrix {
   clear: both;
+}
+
+div.matrix .radio_list li
+{
+	width: 82px !important;
 }
 
 ul li {
@@ -202,12 +225,13 @@ div.matrix ul li {
   clear:none !important;
   float:left !important;
   list-style-type:none;
-  margin-right:2px;
+  margin-right:1px;
   width:82px;
 }
 
 ul.matrixHeader {
   float:right;
+  width: 495px;
 }
 
 ul.desc {
@@ -229,7 +253,7 @@ ul.matrixHeader li {
 
 div.matrix label {
   float: left;
-  width: 160px;
+  width: 120px;
 }
 
 div.matrix .radio_list {
@@ -251,4 +275,16 @@ div.matrix .radio_list {
   padding:0;
   position:relative;
   width:704px;
+}
+
+form.dankeUmfrage sup{
+	display: none;
+}
+
+div.section {
+	clear: both !important;
+}
+
+div.formUmfrage ul.error_list{
+  display: none;
 }

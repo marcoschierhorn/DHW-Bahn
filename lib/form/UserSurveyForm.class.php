@@ -78,10 +78,10 @@ class UserSurveyForm extends BaseUserForm
 
     $this->getWidgetSchema()->setLabels(array(
     	'angebotbekannt' => 'War Dir das Quer-durchs-Land-Ticket bereits vor der Aktion bekannt und wenn ja, wie vertraut bist Du mit diesem Angebot?',
-    	'survey_anlaesse_list' => 'Zu welchen der folgenden Anlässe käme die Nutzung des Quer-durchs-Land-Tickets für Dich generell in Betracht?',
-    	'vergleichbarereise' => 'Du hast eingangs angegeben, dass Du das Quer-durchs-Land-Ticket bereits genutzt hast.Wirst Du das Quer-durchs-Land-Ticket in Zukunft für eine vergleichbare Reise wieder nutzen?',
-    	'survey_angebot_verkehrsmittel12_list' => 'Welche der folgenden Verkehrsmittel hast Du in den letzten 12 Monaten bei Deinen Reisen genutzt?<br/>Mehrfachantworten sind möglich',
-    	'survey_angebot_verkehrsmittel_allgemein_list' => 'Und welche dieser Verkehrsmittel kommen für Dich überhaupt bei Deinen Reisen in Frage?<br/>Mehrfachantworten sind möglich',
+    	'survey_anlaesse_list' => 'Zu welchen der folgenden Anlässe käme die Nutzung des Quer-durchs-Land-Tickets für Dich generell in Betracht?<br/>(Mehrfachantworten sind möglich)',
+    	'vergleichbarereise' => 'Du hast eingangs angegeben, dass Du das Quer-durchs-Land-Ticket bereits genutzt hast. Wirst Du das Quer-durchs-Land-Ticket in Zukunft für eine vergleichbare Reise wieder nutzen?',
+    	'survey_angebot_verkehrsmittel12_list' => 'Welche der folgenden Verkehrsmittel hast Du in den letzten 12 Monaten bei Deinen Reisen genutzt?<br/>(Mehrfachantworten sind möglich)',
+    	'survey_angebot_verkehrsmittel_allgemein_list' => 'Und welche dieser Verkehrsmittel kommen für Dich überhaupt bei Deinen Reisen in Frage?<br/>(Mehrfachantworten sind möglich)',
     ));
 
     $this->widgetSchema->setFormFormatterName('Bahn');
@@ -92,68 +92,84 @@ class UserSurveyForm extends BaseUserForm
   protected function setAnlaesseBekannt()
   {
     $this->setWidgets(array(
-      'survey_anlaesse_list'                         => new sfWidgetFormDoctrineChoice(array('expanded' => true, 'multiple' => true, 'model' => 'SurveyAnlaesse')),
+      'survey_anlaesse_list'                         => new sfWidgetFormDoctrineChoice(array('expanded' => true, 'multiple' => true, 'model' => 'SurveyAnlaesse'),
+      array('onchange' => 'clearFormAndSetCheck(jQuery(this))')),
     ));
 
     $this->setValidators(array(
-      'survey_anlaesse_list'                         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAnlaesse', 'required' => false)),
+      'survey_anlaesse_list'                         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAnlaesse', 'required' => true)),
     ));
+
+    $this->setOption('clearFormValues', array(9, 10));
   }
 
   protected function setVerkehrsmittel12()
   {
     $this->setWidgets(array(
-      'survey_angebot_verkehrsmittel12_list'         => new sfWidgetFormDoctrineChoice(array('expanded' => true, 'multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittel12')),
+      'survey_angebot_verkehrsmittel12_list'         => new sfWidgetFormDoctrineChoice(array('expanded' => true, 'multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittel12'),
+      array('onchange' => 'clearFormAndSetCheck(jQuery(this))')),
     ));
 
     $this->setValidators(array(
-      'survey_angebot_verkehrsmittel12_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittel12', 'required' => false)),
+      'survey_angebot_verkehrsmittel12_list'         => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittel12', 'required' => true)),
     ));
+
+    $this->setOption('clearFormValues', array(7, 8));
   }
 
   protected function setVerkehrsmittelAllgemein()
   {
     $this->setWidgets(array(
-      'survey_angebot_verkehrsmittel_allgemein_list' => new sfWidgetFormDoctrineChoice(array('expanded' => true, 'multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittelAllgemein')),
+      'survey_angebot_verkehrsmittel_allgemein_list' => new sfWidgetFormDoctrineChoice(array('expanded' => true, 'multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittelAllgemein'),
+      array('onchange' => 'clearFormAndSetCheck(jQuery(this))')),
     ));
 
     $this->setValidators(array(
-      'survey_angebot_verkehrsmittel_allgemein_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittelAllgemein', 'required' => false))
+      'survey_angebot_verkehrsmittel_allgemein_list' => new sfValidatorDoctrineChoice(array('multiple' => true, 'model' => 'SurveyAngebotVerkehrsmittelAllgemein', 'required' => true))
     ));
+
+    $this->setOption('clearFormValues', array(7, 8));
   }
 
   public function save($con = null)
   {
 
-  	if ((int) $this->getOption('step', 1)==1 || (int) $this->getOption('step', 1)==4)
-  	{
-  	  if (!is_null($survey = $this->getObject()->getSurvey()))
+    $user   = Doctrine_Core::getTable('User')->find(array($this->object->getId()));
+    $survey = Doctrine_Core::getTable('Survey')->find(array($user->getSurveyId()));
+
+    $values = $this->getValues();
+
+    if ($survey)
+    {
+      $user->setSurveyId($survey->getId());
+      $values['survey_id'] = $survey->getId();
+    }
+
+    if ((int) $this->getOption('step', 1)==1 || (int) $this->getOption('step', 1)==4)
+    {
+
+      if (!is_null($survey))
       {
 
-        $user   = Doctrine_Core::getTable('User')->find(array($this->object->getId()));
-        if (!is_null($survey = Doctrine_Core::getTable('Survey')->find(array($user->getSurveyId()))))
+        if (!$survey instanceof Survey)
         {
+          $survey = new Survey();
+        }
 
-          if (!$survey instanceof Survey)
-          {
-            $survey = new Survey();
-          }
-
-          $values = $this->getValues();
-          $survey->fromArray($values);
-          $survey->save();
+        $survey->fromArray($values);
+        $survey->save();
 
           $this->object->setSurveyId($survey->getId());
           $this->object->save();
         }
-      }
+
   	}
   	else if ((int) $this->getOption('step', 1)==2)
   	{
   	  // update user info
       if (!is_null($surveyGefallen = $this->getObject()->getSurveyGefallen()))
       {
-        $values = $this->getValues();
+
         if ( $surveyGefallen->isNew() )
         {
           $values['user_id'] = $this->object->getId();
@@ -164,7 +180,7 @@ class UserSurveyForm extends BaseUserForm
   	}
   	else
   	{
-  	  $this->saveEmbeddedForms($con);
+  	  parent::save($con);
   	}
 
   	return $this->object;

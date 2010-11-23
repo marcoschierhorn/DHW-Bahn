@@ -4,6 +4,7 @@
 default:
   http_metas:
     content-type: text/html
+    P3P:          CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"
 
   metas:
     title:        Bahn Gewinnspiel

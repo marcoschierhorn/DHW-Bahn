@@ -1,0 +1,7 @@
+form.dankeUmfrage ul.radio_list li label, form.dankeUmfrage ul.checkbox_list label { position: relative; top: -12px; }
+form.dankeUmfrage ul.radio_list li, form.dankeUmfrage ul.checkbox_list li{ height: 20px; }
+form.dankeUmfrage { margin: 10px 0 0 -1px;}
+button.highlight[title="Jetzt teilnehmen"] { display: block !important; position: absolute; top: -18px !important; }
+.button-inside span.button-border { background-color: transparent; }
+.button-inside { height: 15px;}
+h3 { clear: all; } 

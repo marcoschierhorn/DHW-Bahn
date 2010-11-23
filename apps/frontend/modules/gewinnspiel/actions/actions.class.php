@@ -10,16 +10,19 @@
  */
 class gewinnspielActions extends sfActions
 {
+  public function preExecute()
+  {
+    header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+    $this->getResponse()->setHttpHeader('P3P', 'CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
+  }
+
   public function executeIndex(sfWebRequest $request)
   {
-    /*
-    $q = Doctrine::getTable('Codes')
-      ->createQuery('c')
-      ->orderBy('RAND()')
-      ->where('c.used != 1')
-      ->limit(1);
-     $code = $q->fetchOne();
-		*/
+    if (!$request->isMethod('post'))
+    {
+      session_destroy();
+      session_start();
+    }
     $this->form = new UserForm();
   }
 
@@ -69,12 +72,13 @@ class gewinnspielActions extends sfActions
 
       $this->getUser()->setAttribute('user_id', $user->getId());
       $this->getUser()->setAttribute('show4', false);
-      $this->redirect('gewinnspiel/danke');
+      $this->redirect('gewinnspiel/danke#dankeGewinnspiel');
     }
   }
 
   public function executeUmfrage(sfWebRequest $request)
   {
+    $this->getUser()->setAttribute('lastStep', null);
 
     if (!$this->getUser()->hasAttribute('user_id') || (int) $this->getUser()->getAttribute('user_id') <= 0)
     {
@@ -85,56 +89,57 @@ class gewinnspielActions extends sfActions
 
     if ($this->getUser()->hasAttribute('lastStep'))
     {
-      if ((int) $this->getUser()->getAttribute('lastStep') + 2 < (int) $request->getParameter('step', 1))
+      $addStep = 1;
+      if ($this->getUser()->getAttribute('show4')==false && (int) $request->getParameter('step', 1) == 5)
       {
-        $this->redirect('gewinnspiel/umfrage?step='.intval($this->getUser()->getAttribute('lastStep')+1));
+        $addStep = 2;
+      }
+
+      if ((int) $this->getUser()->getAttribute('lastStep') + $addStep < (int) $request->getParameter('step', 1))
+      {
+        $this->redirect('gewinnspiel/umfrage?step='.intval($this->getUser()->getAttribute('lastStep')));
       }
     }
+
+    $this->nextStep = $request->getParameter('step', 1);
 
     $this->form = new UserSurveyForm($this->user, array('step' => $request->getParameter('step', 1)));
 
-    if ((int) $request->getParameter('step', 1)>1)
-      $this->oldForm = new UserSurveyForm($this->user, array('step' => intval($request->getParameter('step', 1)-1)));
-    else
-      $this->oldForm = null;
-
-    $this->nextStep = intval($request->getParameter('step', 1))+1;
-
     $this->formPartial = $this->form->formPartial;
 
+    $this->uncheckValues = $this->form->getOption('clearFormValues', array());
+
     $this->processUmfrageForm($request, $this->form, $this->oldForm, $this->user);
-
-    if ((int) $request->getParameter('step', 1)==2)
-    {
-      if ((int) $this->oldForm->getValue('survey_angebot_bekannt_id')==4)
-      {
-        $this->getUser()->setAttribute('show4', true);
-      }
-    }
-
-    if ((int) $request->getParameter('step', 1)==3 && $this->getUser()->getAttribute('show4')==false)
-    {
-      $this->getUser()->setAttribute('lastStep', 4);;
-      $this->nextStep = 5;
-    }
-
-    if ((int) $request->getParameter('step', 1)>6)
-    {
-      $this->getUser()->setAttribute('user_id', false);
-      $this->redirect('gewinnspiel/dankeUmfrage?id='.$this->user->getId());
-    }
   }
 
   protected function processUmfrageForm(sfWebRequest $request, sfForm $form, $oldForm = null, User $user)
   {
-    if ($oldForm!=null)
+    if ($form!=null && $request->isMethod('post'))
     {
-      $oldForm->bind($request->getParameter($oldForm->getName()), $request->getFiles($oldForm->getName()));
+      $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
 
-      if ($oldForm->isValid())
+      if ($form->isValid())
       {
-        $oldForm->save();
-        $this->getUser()->setAttribute('lastStep', (int) $oldForm->getOption('step'));
+        $form->save();
+        $this->getUser()->setAttribute('lastStep', (int) $form->getOption('step'));
+
+        if ((int) $form->getOption('step') == 1 && (int) $form->getValue('survey_angebot_bekannt_id')==4)
+        {
+          $this->getUser()->setAttribute('show4', true);
+        }
+
+        if (intval($form->getOption('step')+1)>6)
+        {
+          $this->getUser()->setAttribute('user_id', false);
+          $this->redirect('gewinnspiel/dankeUmfrage?id='.$this->user->getId());
+        }
+
+        if (intval($form->getOption('step'))==3 && $this->getUser()->getAttribute('show4')==false)
+        {
+          $this->redirect('gewinnspiel/umfrage?step=5');
+        }
+
+        $this->redirect('gewinnspiel/umfrage?step='.intval($form->getOption('step')+1));
       }
     }
   }
@@ -155,6 +160,11 @@ class gewinnspielActions extends sfActions
     $username   = $user->getFullName();
     $couponCode = $user->getCodes()->getName();
 
+    if (sfConfig::get('sf_environment')=='dev')
+      $recipientEmail = 'marco.schierhorn@gmail.com';
+    else
+      $recipientEmail = $user->getEmail();
+
     $message = $this->getMailer()->compose(
       array('wohin-du-willst@deutschebahn.com' => 'Quer-durchs-Land'),
       $user->getEmail(),
@@ -171,13 +181,13 @@ Für Dein Interesse am Quer-durchs-Land-Ticket bedanken wir uns außerdem mit ei
 
 Dein persönlicher eCoupon*: $couponCode
 
-Also: Bis 30.04.2011 online ein Quer-durchs-Land-Ticket buchen, 6 Euro sparen, die Flatrate für ganz Deutschland testen und so weit, so oft und wohin Du willst fahren!
+Also: Bis 31.04.2011 online ein Quer-durchs-Land-Ticket buchen, 6 Euro sparen, die Flatrate für ganz Deutschland testen und so weit, so oft und wohin Du willst fahren!
 
 Mit besten Grüßen
 
 Dein bahn.de-Team
 
-* Der eCoupon ist vom 13.12.2010 bis 30.04.2011 gültig. Nur ein Coupon pro Ticket. Der Coupon gilt ausschließlich für den angegebenen Zeitraum. Umtausch, Erstattung und Barauszahlung sind grundsätzlich ausgeschlossen. Einlösung nur unter www.bahn.de bei Online-Buchung eines Quer-durchs-Land-Tickets zum Selbstausdrucken. Weitere Infos unter www.bahn.de/wohin-du-willst
+* Der eCoupon ist vom 13.12.2010 bis 31.04.2011 gültig. Nur ein Coupon pro Ticket. Der Coupon gilt ausschließlich für den angegebenen Zeitraum. Umtausch, Erstattung und Barauszahlung sind grundsätzlich ausgeschlossen. Einlösung nur unter www.bahn.de bei Online-Buchung eines Quer-durchs-Land-Tickets zum Selbstausdrucken. Weitere Infos unter www.bahn.de/wohin-du-willst
 
 Du hast diese E-Mail erhalten, weil Du an unserem „Wohin-Du-willst“-Gewinnspiel (www.bahn.de/wohin-du-willst) teilgenommen hast. Solltest Du Dich nicht selbst angemeldet haben oder Dich vom Gewinnspiel wieder abmelden wollen, klicke bitte hier $abmeldenUrl, um alle Deine Daten zu löschen.
 EOF

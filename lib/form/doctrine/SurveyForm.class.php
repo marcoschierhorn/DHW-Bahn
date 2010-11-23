@@ -28,6 +28,11 @@ class SurveyForm extends BaseSurveyForm
     	'survey_angebot_vergleichbare_reise_id' => 'Du hast eingangs angegeben, dass Du das Quer-durchs-Land-Ticket bereits genutzt hast.Wirst Du das Quer-durchs-Land-Ticket in Zukunft für eine vergleichbare Reise wieder nutzen?',
     ));
 
+    $this->setValidators(array(
+      'survey_angebot_bekannt_id'             => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('SurveyAngebotBekannt'), 'required' => true)),
+      'survey_angebot_vergleichbare_reise_id' => new sfValidatorDoctrineChoice(array('model' => $this->getRelatedModelName('SurveyAngebotVergleichbareReise'), 'required' => true)),
+    ));
+
     $this->widgetSchema->setFormFormatterName('BahnEmbed');
   }
 }
