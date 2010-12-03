@@ -3,6 +3,10 @@
 
 # default values
 all:
+  user:
+    blacklist: ['Nienhaus']
+
+
   sf_crypto_captcha:
   #Dimensions
     width:                            200                 #width of the captcha

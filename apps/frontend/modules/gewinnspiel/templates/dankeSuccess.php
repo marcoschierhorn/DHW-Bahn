@@ -31,7 +31,7 @@
     </span>
     <br/><br/>
     <span class="button-border">
- 			<a href="http://www.bahn.de/quer-durchs-land" target="_blank"><span>Hier geht's zum Quer-durchs-Land-Ticket</span></a>
+ 			<a target="_parent" href="http://www.bahn.de/regional/view/regionen/freizeit/quer-durchs-land.shtml?dbkanal_004=L01_S01_D001_KPM0006_qdl-hsp_LZ01"><span>Hier geht's zum Quer-durchs-Land-Ticket</span></a>
  		</span>
   </div>
 </p>

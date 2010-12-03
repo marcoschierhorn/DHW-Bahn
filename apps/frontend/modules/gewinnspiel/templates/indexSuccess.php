@@ -26,11 +26,11 @@
   <div class="section clearfix">
   <div class="col first two-thirds">
     <div class="wrapper nopadtop">
-      <h3><a href="http://www.bahn.de/regional/view/regionen/freizeit/quer-durchs-land.shtml">Eure Flatrate für Deutschland</a></h3>
+      <h3>Eure Flatrate für Deutschland</h3>
       <p>Einen Tag lang einsteigen, umsteigen und weiterfahren, so weit, so oft, wohin Ihr wollt - und das schon ab 42 Euro. Ob nun auf Schneehügeln oder Ostseewellen surfen, zu Festivals oder in die Heimat fahren. Und am besten gleich die Freunde mitnehmen und gemeinsam sparen - denn zu mehreren wird es für jeden noch günstiger!</p>
       <ul class="link-list">
         <li>
-        	<a href="http://www.bahn.de/regional/view/regionen/freizeit/quer-durchs-land.shtml">
+        	<a target="_parent" href="http://www.bahn.de/regional/view/regionen/freizeit/quer-durchs-land.shtml?dbkanal_004=L01_S01_D001_KPM0006_qdl-hsp_LZ01">
         	<?php if (time()>strtotime("13 December 2010")):?>
         		Mehr über das Ticket erfahren und direkt buchen ...
         	<?php else:?>
@@ -73,7 +73,7 @@
           		</td>
           	</tr>
             <tr>
-              <td headers="th-1-1">1. Unter <a target="_blank" href="http://www.bahn.de/quer-durchs-land">www.bahn.de/quer-durchs-land</a> das Ticket auswählen.</td>
+              <td headers="th-1-1">1. Unter <a target="_parent" href="http://www.bahn.de/regional/view/regionen/freizeit/quer-durchs-land.shtml?dbkanal_004=L01_S01_D001_KPM0006_qdl-hsp_LZ01">www.bahn.de/quer-durchs-land</a> das Ticket auswählen.</td>
             </tr>
             <tr>
               <td headers="th-1-1">2. Auf den Button "Zur Buchung“ klicken.</td>

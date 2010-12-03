@@ -10,6 +10,8 @@
  */
 class gewinnspielActions extends sfActions
 {
+  protected $bruteForce = false;
+
   public function preExecute()
   {
     header('P3P: CP="IDC DSP COR ADM DEVi TAIi PSA PSD IVAi IVDi CONi HIS OUR IND CNT"');
@@ -52,15 +54,34 @@ class gewinnspielActions extends sfActions
     $form->bind($request->getParameter($form->getName()), $request->getFiles($form->getName()));
     if ($form->isValid())
     {
-      // Get a random eCoupon Code and store it in the Users Table
-      $q = Doctrine::getTable('Codes')
-      ->createQuery('c')
-      ->orderBy('RAND()')
-      ->where('c.used != 1')
-      ->limit(1);
-
-      $code = $q->fetchOne();
       $user = $form->save();
+
+      foreach(sfConfig::get('app_user_blacklist') as $blackname)
+      {
+        if (strpos(strtolower(trim($user->getNachname())), strtolower($blackname))!== false)
+        {
+          // Dont save Codes and send 00000 as the code
+          $this->logMessage('Blacklist found an entry : '.$user->getNachname().' | E-Mail: '.$user->getEmail(), 'alert');
+          $this->bruteForce = true;
+        }
+      }
+
+      if ($this->bruteForce == true)
+      {
+        $code = new Codes();
+        $code->setName('000000');
+      }
+      else
+      {
+         // Get a random eCoupon Code and store it in the Users Table
+        $q = Doctrine::getTable('Codes')
+        ->createQuery('c')
+        ->orderBy('RAND()')
+        ->where('c.used != 1')
+        ->limit(1);
+
+        $code = $q->fetchOne();
+      }
 
       $user->setCodes($code);
       $user->save();
