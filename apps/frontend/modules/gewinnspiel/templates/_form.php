@@ -11,8 +11,9 @@ captcha_reload_button();
 
     <?php echo $form->renderHiddenFields(false) ?>
 
-      <?php echo $form->renderGlobalErrors() ?>
-
+      <div class="globalErrors">
+        <?php echo $form->renderGlobalErrors() ?>
+      </div>
       <fieldset>
 
         <?php echo $form['anrede']->renderRow() ?>

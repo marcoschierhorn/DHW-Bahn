@@ -288,3 +288,20 @@ div.section {
 div.formUmfrage ul.error_list{
   display: none;
 }
+
+div.globalErrors {
+    margin-bottom: 15px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+    width: 375px;
+}
+
+div.globalErrors ul.error_list {
+  margin: 0 auto;
+}
+
+div.globalErrors ul li {
+  font-size: 14px;
+  font-weight: bold;  
+}

@@ -39,6 +39,13 @@ class UserForm extends BaseUserForm
     $this->getWidget('standorte_id')->setLabel('Mein Studienort');
     $this->getWidget('plz')->setLabel('PLZ');
 
+    $this->validatorSchema->setPostValidator(
+      new sfValidatorAnd(array(
+        new sfValidatorDoctrineUnique(array('model' => 'User', 'column' => array('email'))),
+        new dhwValidatorNames(array('model' => 'User', 'column' => array('vorname', 'nachname'), 'throw_global_error' => true))
+      ))
+    );
+
     $this->getValidator('standorte_id')->setOption('required', true);
 
     $this->widgetSchema->setFormFormatterName('Bahn');
