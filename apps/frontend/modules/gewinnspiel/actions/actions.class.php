@@ -208,7 +208,7 @@ Mit besten Grüßen
 
 Dein bahn.de-Team
 
-* Der eCoupon ist vom 13.12.2010 bis 31.04.2011 gültig. Nur ein Coupon pro Ticket. Der Coupon gilt ausschließlich für den angegebenen Zeitraum. Umtausch, Erstattung und Barauszahlung sind grundsätzlich ausgeschlossen. Einlösung nur unter www.bahn.de bei Online-Buchung eines Quer-durchs-Land-Tickets zum Selbstausdrucken. Weitere Infos unter www.bahn.de/wohin-du-willst
+* Der eCoupon ist vom 13. Dezember 2010 bis 30. April 2011 gültig. Nur ein eCoupon pro Ticket. Der eCoupon kann nur im eingeloggten Bereich eingelöst werden und ist nicht übertragbar. Der eCoupon gilt ausschließlich für den angegebenen Zeitraum, Umtausch, Erstattung und Barauszahlung sind grundsätzlich ausgeschlossen. Einlösung nur unter www.bahn.de bei Online-Buchung eines Quer-durchs-Land-Tickets zum Selbstausdrucken. Nichteingelöste eCoupons verfallen. Weitere Infos unter www.bahn.de/wohin-du-willst
 
 Du hast diese E-Mail erhalten, weil Du an unserem „Wohin-Du-willst“-Gewinnspiel (www.bahn.de/wohin-du-willst) teilgenommen hast. Solltest Du Dich nicht selbst angemeldet haben oder Dich vom Gewinnspiel wieder abmelden wollen, klicke bitte hier $abmeldenUrl, um alle Deine Daten zu löschen.
 EOF

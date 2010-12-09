@@ -62,7 +62,14 @@
       </ul>
       <div class="wrapper tabcontent" id="t-content-1" style="display: block;">
         <h3>Online buchen, ausdrucken und losfahren - und 6 Euro sparen.</h3>
-        <p>Der eCoupon ist vom 13. Dezember 2010 bis 30. April 2011 gültig. Nur ein Coupon pro Ticket. Der Coupon gilt ausschließlich für den angegebenen Zeitraum. Umtausch, Erstattung und Barauszahlung sind grundsätzlich ausgeschlossen. Einlösung nur unter www.bahn.de bei Online-Buchung eines Quer-durchs-Land-Tickets zum Selbstausdrucken. </p>
+        <p>Der eCoupon ist vom 13. Dezember 2010 bis 30. April 2011 gültig. Nur ein
+          eCoupon pro Ticket. Der eCoupon kann nur im eingeloggten Bereich eingelöst
+          werden und ist nicht übertragbar. Der eCoupon gilt ausschließlich für den
+          angegebenen Zeitraum, Umtausch, Erstattung und Barauszahlung sind
+          grundsätzlich ausgeschlossen. Einlösung nur unter www.bahn.de bei
+          Online-Buchung eines Quer-durchs-Land-Tickets zum Selbstausdrucken.
+          Nichteingelöste eCoupons verfallen.
+       </p>
       </div>
       <div class="wrapper tabcontent" id="t-content-2" style="display: none;">
         <table cellspacing="0" cellpadding="0">
